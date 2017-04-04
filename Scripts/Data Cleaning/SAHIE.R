@@ -22,5 +22,3 @@ for (x in 1:length(health.csv)) {
 
 # Exporting the dataset
 export(final.data, "Data/SAHIE-data.json")
-
-table(final.data$year)

@@ -22,5 +22,8 @@ source('Scripts/Data Cleaning/Crime.R')
 # Cleaning and exporting health dataset
 source('Scripts/Data Cleaning/SAHIE.R')
 
+# Cleaning and exporting income dataset
+source('Scripts/Data Cleaning/SAPIE.R')
+
 # Merging datasetst
 source('Scripts/Data Cleaning/merging.R')
