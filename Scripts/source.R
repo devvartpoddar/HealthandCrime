@@ -2,7 +2,7 @@
 
 # Intialisation
 rm(list = ls())
-pkgs <- c('dplyr', 'magrittr', 'methods', 'rvest', 'stringi', 'rio', 'gmailr')
+pkgs <- c('dplyr', 'magrittr', 'methods', 'rvest', 'stringi', 'rio', 'gmailr', 'plm')
 
 for (p in pkgs) {
   load <- require(p, character.only = T, quietly = T)
@@ -17,7 +17,7 @@ rm(pkgs)
 try(setwd("/home/devvart/Dropbox/Hertie/HealthandCrime"))
 
 # Cleaning and exporting crime dataset
-source('Scripts/Data Cleaning/Crime.R')
+# source('Scripts/Data Cleaning/Crime.R')
 
 # Cleaning and exporting health dataset
 source('Scripts/Data Cleaning/SAHIE.R')
