@@ -3,7 +3,10 @@ rm(list = ls())
 
 # Loading datasets
 crime.data <- import('Data/Crime-data.json') %>%
-  filter(year >= 2005)
+  filter(year >= 2005) %>%
+  select(year, FIPS_ST, FIPS_CTY, CPOPARST,
+      GRNDTOT:BURGLRY, VANDLSM, DRUGTOT,
+      VAGRANT, RUNAWAY)
 
 health.data <- import('Data/SAHIE-data.json') %>%
   select(-version, -agecat, -racecat, -sexcat, -geocat) %>%
@@ -28,6 +31,10 @@ urban.data <- import('Raw Data/Others/Urban.xls') %>%
   select(-UIC_2013) %>%
   mutate(FIPS = as.numeric(FIPS))
 
+race.data <- import('Data/race_all_ages.json') %>%
+  filter(year >= 2005) %>%
+  select(-statefips, -countyfips)
+
 # Merging dataset
 final.data <- merge(crime.data, health.data,
     by.x = c('year', 'FIPS_ST', 'FIPS_CTY'),
@@ -42,12 +49,16 @@ final.data <- merge(crime.data, health.data,
   mutate(UID = 1000 * FIPS_ST + FIPS_CTY) %>%
   # Creating unique State County ID
   select(UID, year, everything()) %>%
-  select(-STUDYNO, -EDITION, -PART) %>%
   select(-matches("_moe")) %>%
   arrange(UID, year) %>%
   select(-state_name.x, - county_name.x, -state_name.y,
       - county_name.y) %>%
-  merge(urban.data, by.x = "UID", by.y = "FIPS", all = T)
+  merge(urban.data, by.x = "UID", by.y = "FIPS", all = T) %>%
+  merge(race.data, by.x = c("UID", 'year'),
+    by.y = c("FIPS", 'year'), all.x = T) %>%
+  mutate(white_pct = white / CPOPARST,
+      minority_pct =1 - white_pct) %>%
+      select(-black, -white, -other)
 
 export(final.data, 'Data/merged-data.json')
 

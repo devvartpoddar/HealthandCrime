@@ -6,6 +6,9 @@ final.data <- import('Data/merged-data.json') %>%
   mutate(lag.crime = dplyr::lag(GRNDTOT)) %>%
   mutate(obamacare = ifelse(year >= 2013, 1, 0))
 
-reg <- plm(GRNDTOT ~ NUI + as.factor(obamacare) + MedianIncome +
-  unemployed_pct + lag.crime + CPOPARST, data = final.data)
+reg <- plm(P1TOT ~ NUI + as.factor(obamacare) + MedianIncome +
+  unemployed_pct + lag.crime + CPOPARST + as.factor(year) + minority_pct,
+  data = final.data)
 summary(reg)
+
+str(final.data)

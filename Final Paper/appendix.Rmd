@@ -1,0 +1,130 @@
+---
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      error = FALSE, cache = 2)
+knitr::opts_knit$set(root.dir = '/home/devvart/Dropbox/Hertie/HealthandCrime')
+```
+
+## Current Work in Progress
+
+### Fished Tasks
+
+- Finished Compilation of data from all the sources. I have all the variables,
+that correspond to the literature I hav reviewed so far.
+- Visualisation close to finishing. Need to create a generic function to plot,
+coefficients. Heatmaps and likes are done.
+- ~ 400 0 words in my draft. Includes the introduction, a brief literature review (havent written much here) and the methodology (includes data sources, and unpolished hypothesis).
+
+### Further Work
+
+- Finish looking for 2015 crime data. Unfortunately all the crime data post 2015 I have are estimations. I realised after looking at the codebook that they use only close to 700 ~ 1000 counties to estimate for the entire year. Was skewing my results, and so I avoided them. But FBI has released the final data for 2015 which I now 
+need to include.
+- Finish the literature survey (Due: Wednesday)
+- Finish regressions for sub-crimes. These are also almost over, but havent written them down yet.
+- Look at panel instrumental variables
+
+## What does the data looks like?
+
+The dataset is currently spread of `r 2014-2006 + 1` year, across all the counties in United States. I have a detailed breakdown of crime in the counties, with a total rate along with vagrancy, burglary, violent crimes and drug possesion and sale. 
+
+I use median income and the percent of minority individuals in the county as my major controls. 
+
+```{r wd}
+source('packages.R')
+final.data <- import('Data/merged-data.json') %>%
+  arrange(UID, year) %>%
+  group_by(UID) %>%
+  mutate(lag.crime = dplyr::lag(GRNDTOT)) %>%
+  select(-iprcat) %>%
+  ungroup()
+```
+
+```{r heatmap, fig.cap="% of Americans uninsured by year"}
+output <- capture.output({
+  us.shp <- readOGR('Raw Data/Shape Files', 'UScounties') %>%
+  fortify(region = "FIPS") %>%
+  mutate(UID = as.numeric(id))
+})
+
+final.data %>%
+  filter(FIPS_ST != 2, FIPS_ST != 15,
+         year >= 2010) %>% # Removing Alaska and Hawaii
+  left_join(us.shp) %>%
+  ggplot() +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = PCTUI)) +
+  facet_wrap(~year) +
+  coord_map() +
+  scale_fill_viridis(option = "A") +
+  labs(fill = "% of Americans uninsured") +
+  theme_minimal() +
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "bottom"
+  )
+```
+
+```{r visualisation, fig.width=4, fig.height=4}
+final.data %>%
+  filter(year > 2005, GRNDTOT > 5) %>% 
+  ggplot() +
+  geom_point(aes(x = log(NUI), y = log(GRNDTOT)), alpha = 0.2, colour = "#8B7D6B") +
+  labs(x = "Number of Uninsured Individuals (logged)", 
+       y = "Total Crime (logged)",
+       caption = "NOTE: Removed the least frequent crime figures (<5)") +
+  theme_minimal()
+
+```
+
+There is a clear positive trend between the two. Weirdly though the trend vanishes if controlling for the population of the county. Should I look deeper into the data?
+
+```{r visualisation_pct, fig.width=4, fig.height=4}
+final.data %>%
+  filter(year > 2005, GRNDTOT > 5) %>% 
+  ggplot() +
+  geom_point(aes(x = PCTUI, y = GRNDTOT / CPOPARST),
+             alpha = 0.2, colour = "#8B7D6B") +
+  labs(x = "% of Uninsured Individuals (logged)", 
+       y = "Total Crime per capita (logged)",
+       caption = "NOTE: Removed the least frequent crime figures (<5)") +
+  theme_minimal()
+
+```
+
+## First Results
+
+```{r regressions}
+model1 <- plm(GRNDTOT ~ lag.crime + NUI, data = final.data)
+model1_control <- plm(GRNDTOT ~ lag.crime + NUI + MedianIncome +
+                      unemployed_pct + minority_pct, data = final.data)
+
+
+model2 <- plm(GRNDTOT ~ lag.crime + PCTUI, data = final.data)
+model2_control <- plm(GRNDTOT ~ lag.crime + PCTUI + MedianIncome +
+                      unemployed_pct + minority_pct, data = final.data)
+
+log.data <- final.data %>%
+  mutate_at(vars(matches('GRNDTOT|lag|NUI|_pct|Median')), funs(log))
+
+model3 <- plm(GRNDTOT ~ lag.crime + NUI, data = log.data)
+model3_control <- plm(GRNDTOT ~ lag.crime + NUI + MedianIncome +
+                      unemployed_pct + minority_pct, data = log.data)
+```
+
+In the tables below, the variables NUI and PCTUI refer to the number of un-insured and the percentage of uninsured respectively. The results change marginally, when I include the population of the county as a control, but not significantly. 
+
+Finally, model 3 for both tables tries out a log-linear model. I would like to include those as my final model. But unfortunately the Rsquares are nearly half the amount.
+
+
+```{r results, results="asis"}
+stargazer(model1, model2, model3, header = F, title = "Base Model coefficients")
+```
+
+```{r results_with_controls, results="asis"}
+stargazer(model1_control, model2_control, model3_control, header = F,
+          title = "Coefficients with control variables")
+```
