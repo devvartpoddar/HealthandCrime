@@ -13,7 +13,7 @@ knitr::opts_knit$set(root.dir = '/home/devvart/Dropbox/Hertie/HealthandCrime')
 ### Fished Tasks
 
 - Finished Compilation of data from all the sources. I have all the variables,
-that correspond to the literature I hav reviewed so far.
+that correspond to the literature I have reviewed so far.
 - Visualisation close to finishing. Need to create a generic function to plot,
 coefficients. Heatmaps and likes are done.
 - ~ 400 0 words in my draft. Includes the introduction, a brief literature review (havent written much here) and the methodology (includes data sources, and unpolished hypothesis).

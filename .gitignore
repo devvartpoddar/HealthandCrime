@@ -36,3 +36,6 @@ vignettes/*.pdf
 # Raw data files
 /Data/
 /Raw Data/
+
+# Lit Review
+/Lit/
