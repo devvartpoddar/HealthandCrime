@@ -2,6 +2,10 @@
 date: "April, 2017"
 output: pdf_document
 
+header-includes:
+  - \usepackage{rotating}
+  - \usepackage{dcolumn}
+
 bibliography: references.bib
 csl: apa.csl
 
@@ -38,43 +42,65 @@ There are few issues which have divided America more than that of healthcare. Un
 
 The ACA, or as it is know colloquially - Obamacare, ranks amongst the largest healthcare reforms in the United States since the introduction of Medicare and Medicaid programs by President Johnson. Among-st its most popular provisions, it banned insurance firms from denying healthcare coverage to individuals with pre-existing conditions and provided subsidies for healthcare purchased through insurances exchanges for the poor. ACA decreased the rate of uninsured individuals from 16% in 2010 when the bill was signed into law, to 9.1% in 2015 - a decline of nearly 43% percent [@Obama2016].    
 
-There have been several papers that have researced the impact of Obamacare, and access to healthcare in general, on issues outside the debate of health economics, such as improved financial security [@Dussalt2016], increased wages [@Dillender2014] or **xxxx**. However few authors have studied the impact of healthcare on crime and criminal activity.  
+There have been several papers that have researched the impact of Obamacare, and access to healthcare in general, on issues outside the debate of health economics, such as improved financial security [@Dussalt2016], increased wages [@Dillender2014] or **xxxx**. However few authors have studied the impact of healthcare on crime and criminal activity.  
 
-Crime has long been studied by economists and sociologists due to the costs it imposes upon society. Gary Becker won the prestigious Nobel Memorial Prize in Economics for his contribution in extending the *"domain of microeconomic analysis to a wide range of human behaviour and interaction, including nonmarket behaviour"*, including the fields the sociology criminology^[Source: <http://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1992/becker-facts.html>]. Becker approached the issue of crime as a trade-off between *risk* and *reward* for an individual. Thus crime was  rationally motivated action by individuals who faced a high rewards upon engaging in a criminal activity, for her / his level of risk. In contrast, sociologists such as Albert Reiss approached the issue of crime from the view point of social and cultural norms. Individuals engaged in criminal activity as a failure of *personal and social controls* [**refer to papers**]. Nonetheless, the primary constraing factor of crime would then be a form of punishmen; increasing the risk to criminals for Becker and reinforcing social controls for Reiss.
+Crime has long been studied by economists and sociologists due to the costs it imposes upon society. Gary Becker won the prestigious Nobel Memorial Prize in Economics for his contribution in extending the *"domain of microeconomic analysis to a wide range of human behaviour and interaction, including nonmarket behaviour"*, including the fields the sociology criminology^[Source: <http://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1992/becker-facts.html>]. Becker approached the issue of crime as a trade-off between *risk* and *reward* for an individual. Thus crime was  rationally motivated action by individuals who faced a high rewards upon engaging in a criminal activity, for her / his level of risk.Thus the primary constraining factor of crime would then be a form of punishment; increasing the risk to criminals.
 
-The author disagrees with these findings. Increasing punishment of criminal activity through the mandatory minimum laws in the United States failed to reduce crime. In contrast to its orginal intent, scholars have found that the mandatory minimum laws have had a dispropotionate impact on the minorities in the United States, creating an image of *super-predators* for an entire race of individuals [**refer to papers**].
+The author disagrees with these findings. Increasing punishment of criminal activity through the mandatory minimum laws in the United States failed to reduce crime. In contrast to its original intent, scholars have found that the mandatory minimum laws have had a disproportionate impact on the minorities in the United States, creating an image of *super-predators* for an entire race of individuals [**refer to papers**].
 
-The author looks at crime, not as a disease that needs to be cured, but rather as a symptom of a larger cause. This is not to say that all forms of crime are caused by social hardship. It would be naive to assume that some forms of crime are not caused due to the hint of a large reward or a moment of indiscipline. However the author believes that crime can be reduced without the need of a drastic institutional buildup by reducing the causes of social hardship thatmotivate crime. Such a tool would be at a lesser cost to society, both financially and humanely, than the cost of a violent war on crime. 
+The author looks at crime, not as a disease that needs to be cured, but rather as a symptom of a larger cause. This is not to say that all forms of crime are caused by social hardship. It would be naive to assume that some forms of crime are not caused due to the hint of a large reward or a moment of indiscipline. However the author believes that crime can be reduced without the need of a drastic institutional buildup by reducing the causes of social hardship that motivate crime. Such a tool would be at a lesser cost to society, both financially and humanely, than the cost of a violent war on crime. 
 
 One of the main motivations of this study is to prove an implication of healthcare reform that has been largely ignored; the reduction of crime as millions of Americans earned access to the healthcare system. The study hopes to rectify the gaps in economic literature that has been woefully lacking in the debate. **ADD findings after the data and consistency checks are over.**  
 
 # Literature Survey
 
+## Social Determinants of Crime
+
+**Becker (1974)** is the authoritative text in economics on the rational of crime. Crime is modeled as an economic activity which requires the trade in a market of crime. The equilibrium in the market can be shifted through exogenous tools available at the hands of policymakers. Of particular, two tools available to lawmakers is he increase in expenditure on law and order institutions which *"help determine the probability that and offense is discoverd"*" (**Becker, 70**); and the size of punishment at conviction. It is wrong. Crime is not always rational. Furthermore, Becker did not take into account differences in crime. Obviously say jaywalking is lesser of a threat than homicide. But as per the theory proposed, the punishment could be the same.  
+
+There has been a rise in interest on General Strain theory in criminology post Agnew's (1992) defense of the theory. Strain theory *typically focused on relationships in which others prevent the individual from achieving positively valued goals* (1992; 49). However it has been broadened to include negative stimuli. In a continuation of the defense written 10 years after the publication of his original paper, Agnew defines the forms of relationships that would aggravate crime. Strains would lead to crime if they match 4 characteristics; they are seen as unjust; are seen as high in magnitude; are associated with low social control; and create a pressure to engage in criminal activity [**Building on the foundation of the general strain thery**].
+
+Empirical studies have shown mixed results regarding the strain theory. Anger plays a particularly crucial role as a negative stimuli. Several research studies have found these effects to be significant, particularly amongst student and youth populations [**Student Anger and aggresive behaviour**]. However they find that while conflict may be predicted by anger, other forms of aggressive behavior are less motivated. On a similar note, studies looked at stresses such as unemployment as a determinant of crime and found it to be positively correlated with crime [Social determinants of crime]. Education was also significant, which does not feature into the stress theory.
+
+Another interesting theory to come out of sociology is the social control theory of crime. The theory explains how people respond in absence of personal and social controls, leading to deviant behavior. An aspect of the social control theory that stands out in the literature is the self-help theory. Crime is a form of violent self-help, often caused by private grievances than hopes of public, or private, gains [**Crime as social control**]. This is interesting, and extends some of the same points as the general strain theory. Crime is caused due to negative stimuli, and can be controlled by reducing the exposure to such stimuli.
+
+The author partially agrees with the frameworks. Crime is a complex phenomenon, which can e explained by a variety of factors. Presupposing that argument, is that while some crimes may be entirely rational (in the works of Becker), several others may not. The distribution of crimes is impossible to predict between the two, but it will definitely help to use alternative approaches t fight crime than an institutional buildup.
+
+## Healthcare and Access
+
+There have been several studies that look at the benefit of health and access to proper healthcare. Apart from the benefits in individual health itself, there is a spillover effect financial stability and wealth, education and mortality.
+
+There are also studies in the opposite direction which look at the lack of wealth, and its impact on healthcare. The endogenity of health however confounds the debate. While several studies have found an impact of income on health [**refer to papers**], some have disputed the correlations. A study using the Asset and Health Dynamics of the Oldest Old (AHEAD) Panel found no causal link between socio-economic status to mortality and health status among older Americans [**Healthy Wealthy and Wise**]. There were also mixed differences regarding the impact of healthcare on income. However the study should be taken with a grain of salt. The individuals studied were older Americans, where the *pension income is not affected by the ability to work*. It is a very select sample, where loss of workdays due to health issues does not impact work. It is likely that in the case of a larger population, there will be a negative correlation.  
+
+## Bringing them together; Does access to healthcare impact crime?
+
 # Methodology
 
 ## Modelling Crime
 
-The authr tests if changes in the rates of uninsured individuals in the United States impact the conditional mean of crime in the different regions. Crime is modeled as an AR(1) process, with the model as defined as in equation 1 below.
+The author tests if changes in the rates of uninsured individuals in the United States impact the conditional mean of crime in the different regions. Crime is modeled as an AR(1) process, with the model as defined as in equation 1 below.
 
 \begin{equation}
 crime_{i, t} = \alpha_{0} crime_{i, t-1} + \beta_{1} insurance_{i,t} + \sum \beta_{e} E_{i,t} + \sum \beta_{d} D_{i,t} + \epsilon_{i} + \epsilon_{t} 
 \end{equation}
 
-In equation (1), $\alpha_{0}$ captures the propensity of crime; i.e the occurance of crime in a county $i$ due to historical crime in the region. This can also be viewed as the cost for a criminal to shift criminal activity. Creation of criminal infrastructure is costly, be it in terms of time spent to attract new recruits or financially; the cost spent as bribes to unethical policemen. While the propensity will mainly capture the costs to organised crime, it includes the costs for an individual criminal entreprenuer. 
+In equation (1), $\alpha_{0}$ captures the propensity of crime; i.e the occurrence of crime in a county $i$ due to historical crime in the region. This can also be viewed as the cost for a criminal to shift criminal activity. Creation of criminal infrastructure is costly, be it in terms of time spent to attract new recruits or financially; the cost spent as bribes to unethical policemen. While the propensity will mainly capture the costs to organised crime, it includes the costs for an individual criminal entrepreneur. 
 
-$\beta_{1}$ is our main coefficient of interest. It would capture the impact of ncreasing (or decreasing) rate of uninsured individuals on criminal activity. *A priori*, it is assumed to be strictly lesser than zero, i.e $\beta_{1} \ll 0$. Furthermore, $E$ refers to a vector of economic controls such as the median income and povert rate in county $i$. the literature is ablivient on the direction of the impact here, with some scholars finding a positive impact on crime [**refer to papers**] and others negative [**refer to papers**]. Finally, $D$ refers to a vector of social and demographical controls such as the population of a county, percentage of minorities in the county and the rural-urban divide. All of these variables have been found to have an impact on the level of crime in a region [**refer to papers**].  
+$\beta_{1}$ is our main coefficient of interest. It would capture the impact of increasing (or decreasing) access to healthcare on criminal activity. For the study, the variable is measured using the insurance rates amongst Americans. *A priori*, it is assumed to be strictly lesser than zero, i.e $\beta_{1} \ll 0$, i.e access to healthcare through insurance reduces crime and vice versa. 
+
+Furthermore, $E$ refers to a vector of economic controls such as the median income and poverty rate in county $i$. the literature is ablievient on the direction of the impact here, with some scholars finding a positive impact on crime [**refer to papers**] and others negative [**refer to papers**]. Finally, $D$ refers to a vector of social and demographic controls such as the population of a county, percentage of minorities in the county and the rural-urban divide. All of these variables have been found to have an impact on the level of crime in a region [**refer to papers**].  
 
 **ASK PROF TRAXLER FOR INSTRUMENTAL REGRESSIONS**
 
 ## Sources of Data
 
-The data for this stdy come from a multitude of sources. Data on crime in the counties of United States is sourced from the National Archive of Criminal Justice Data (NACJD) loacted within the ICPSR, University of Michigan. The primary source of criminal data for the NACJD is the Uniform Crime Reporting (UCR) Program maintained by the Federal Bureau of Investigation in the United States. The UCR data contains county, state and national level aggregations of crimes reported and arrests made by both local and federal agencies in the United States for any year.
+The data for this study come from a multitude of sources. Data on crime in the counties of United States is sourced from the National Archive of Criminal Justice Data (NACJD) located within the ICPSR, University of Michigan. The primary source of criminal data for the NACJD is the Uniform Crime Reporting (UCR) Program maintained by the Federal Bureau of Investigation in the United States. The UCR data contains county, state and national level aggregations of crimes reported and arrests made by both local and federal agencies in the United States for any year.
 
-There is often a delay between the time a crime is reported, and the time of the arrest. The delay is further compunded by the idosyncracies within local and federal law enforcement agencies. To prevent the idiosyncracies from biasing the results, this study uses the data on crime reported in every county, over the arrests made. It leaves consistency checks using different sources of crime to future research.
+There is often a delay between the time a crime is reported, and the time of the arrest. The delay is further compounded by the idiosyncrasies within local and federal law enforcement agencies. To prevent the idiosyncrasies from biasing the results, this study uses the data on crime reported in every county, over the arrests made. It leaves consistency checks using different sources of crime to future research.
 
-The data on crime, gathered through the UCR Program, is comprehensive and contains over 20 sub-divisions of criminal activity; ranging from violent crimes such as burglary to drug possesion and disorderly conduct. Due to the wide range of criminal behaviour, the study limits itself to the study of violent crimes and drug possession, along with vagrancy. Impact of healthcare of other forms of crime is left to future research.  Figure 1 below provides a concise view of the changing criminal actvity in the United States.
+The data on crime, gathered through the UCR Program, is comprehensive and contains over 20 sub-divisions of criminal activity; ranging from violent crimes such as burglary to drug possession and disorderly conduct. Due to the wide range of criminal behavior, the study limits itself to the study of violent crimes and drug possession, along with vagrancy. Impact of healthcare of other forms of crime is left to future research.  Figure 1 below provides a concise view of the changing criminal activity in the United States.
 
-```{r crime_us, fig.cap="Trends in Crime in the United States"}
+```{r crime_us, fig.cap="Trends in crime in the United States"}
 crime.data <- import("Data/Crime-data.json") %>%
   select(year, FIPS_ST, CPOPARST, GRNDTOT) %>%
   group_by(year, FIPS_ST) %>%
@@ -104,9 +130,9 @@ ggplot(crime.data, aes(x = year, y = crime_per)) +
 rm(crime.data, crime.us)
 ```
 
-The different states in United States witness a huge variation in their crime rates. However, as the national average shows, crime is undoubtfully reducing in its trend, though the reduction is only marginal. There are also marginal changes in the composition of criminal activity. Figure 2 showcases the changes in the number of crimes related to the possesion of drugs as a percentage of the total crimes reported. There is a small upward trend post 2012, corresponding with the epidemic of heroin in the United States [**refer to papers or news articles**]. However it presents little evidence of a large difference in the distribution of criminal activity.  
+The different states in United States witness a huge variation in their crime rates. However, as the national average shows, crime is undoubtedly reducing in its trend, though the reduction is only marginal. There are also marginal changes in the composition of criminal activity. Figure 2 showcases the changes in the number of crimes related to the possession of drugs as a percentage of the total crimes reported. There is a small upward trend post 2012, corresponding with the epidemic of heroin in the United States [**refer to papers or news articles**]. However it presents little evidence of a large difference in the distribution of criminal activity.  
 
-```{r crime_by_drug}
+```{r crime_by_drug, fig.cap="Trends in drug related crime in the United States"}
 import("Data/Crime-data.json") %>%
   select(year, GRNDTOT, DRUGTOT) %>%
   group_by(year) %>%
@@ -127,11 +153,11 @@ import("Data/Crime-data.json") %>%
 
 ```
 
-## Health Coverage for Individual Americans
+## Health Coverage
 
-Data on coverage for healthcare comes from the Small Area Health Insurance Estimates (SAHIE) maintained by the Census Bureau. Data was collected from 2000 onward, however due to a change in the estimation method between 2005 and 2006, there is considerable variation between the timelines. This is unfortunate, as President Bush enacted his reform of the Medicare and Medicaid programs in 2001. Nonetheless, the current dataset included the coverage of Americans post the enaction of the ACA, the main source of exogenous variation in our model. Figure 3 below displays the changing access to healthcare for the last 6 years in the dataset. 
+Data on coverage for healthcare comes from the Small Area Health Insurance Estimates (SAHIE) maintained by the Census Bureau. Data was collected from 2000 onward, however due to a change in the estimation method between 2005 and 2006, there is considerable variation between the timelines. This is unfortunate, as President Bush enacted his reform of the Medicare and Medicaid programs in 2001. Nonetheless, the current data-set included the coverage of Americans post the enaction of the ACA, the main source of exogenous variation in our model. Figure 3 below displays the changing access to healthcare for the last 6 years in the data-set. 
 
-```{r county_heatmap_healthinsurance, fig.width=7, fig.height=6}
+```{r county_heatmap_healthinsurance, fig.width=7, fig.height=6, fig.cap="Evolution of uninsured rate in the United States"}
 output <- capture.output({
   us.shp <- readOGR('Raw Data/Shape Files', 'UScounties') %>%
   fortify(region = "FIPS") %>%
@@ -162,17 +188,42 @@ Contrary to data on criminal activity, there is a marked change in the rates of 
 
 ## Income, Geographic and Social Characteristics
 
-Data on income, geographic and social characteristics for the counties were collected to serve as an control for the study. Median Income for Americans in every county were derivied from the Small Area Personal Income estimates (SAPIE) maintained by the Census Bureau. They also maintain a measure of the poverty rate in the different counties which will be explored further in the robustness checks.
+Data on income, geographic and social characteristics for the counties were collected to serve as an control for the study. Median Income for every county were derived from the Small Area Personal Income estimates (SAPIE) maintained by the Census Bureau. They also maintain a measure of the poverty rate in the different counties which will be explored further in the robustness checks.
 
-Social data peraining to the division of the different races in the US was collected from the Surveillance, Epidemiology, and End Results (SEER) Program of the National Cancer Institute. SEER collects data mainly on cancer cases in the United States, but maintaing expertise in collection of population-based statistics. They have a comprehensive distribution of data on race from 1969. For the purpose of the study, a variable measuring the percentage of minorities^[Disregarding the sociological implications for a minute, minorities is defined as the number of non-white individuals. From SEER, it is created by adding the number of African Americans with the number of Asians and Native Indians, divided by the total population of the county] is created. Research has shown minority dominated areas to face higher premium costs [**refer to papers**], higher rates of incarceration [**refer to papers**] and [**xxxx**].  It would therefore be of interest to see if these areas do feature higher rates of crime. 
+Social data pertaining to the division of the different races in the US was collected from the Surveillance, Epidemiology, and End Results (SEER) Program of the National Cancer Institute. SEER collects data mainly on cancer cases in the United States, but maintaining expertise in collection of population-based statistics. They have a comprehensive distribution of data on race from 1969. For the purpose of the study, a variable measuring the percentage of minorities^[Disregarding the sociological implications for a minute, minorities is defined as the number of non-white individuals. From SEER, it is created by adding the number of African Americans with the number of Asians and Native Indians, divided by the total population of the county] is created. Research has shown minority dominated areas to face higher premium costs [**refer to papers**], higher rates of incarceration [**refer to papers**] and [**xxxx**].  It would therefore be of interest to see if these areas do feature higher rates of crime. 
 
-Finally, data on demographical and geographical constructs were obtained from the Census Bureau and the Department of Agriculture respectively. Of Particular interest is the changing levels of population in the different counties, as well as the level of urbanisation. A brief note on the classification of urbanisation in the US. The USDA^[United States Department of Agriculture] defined 9 levels of urbanisation in the US, from large metro cities to smaller towns in the, so-called, non-core areas. However these are collapsed into 6 levels of urbanisation for the study. A breakdown of the original classification by the USDA as well as the collapsed groups is gven in Table 1 in the appendix. 
+Finally, data on demographic and geographical constructs were obtained from the Census Bureau and the Department of Agriculture respectively. Of Particular interest is the changing levels of population in the different counties, as well as the level of urbanization. A brief note on the classification of urbanization in the US. The USDA^[United States Department of Agriculture] defined 9 levels of urbanization in the US, from large metro cities to smaller towns in the, so-called, non-core areas. However these are collapsed into 6 levels of urbanization for the study. A breakdown of the original classification by the USDA as well as the collapsed groups is given in Table 1 in the appendix. 
 
-It is also important to note that the levels of urbanisation do not change in the dataset, as they are fixed to the 2013 levels defined by the USDA. As a result, they can be completely ignored in the fixed-effects setting of the modelling. However urbanisation will be explore further in the robustness checks to measure the drivers of the impact of healthcare on crime.
+It is also important to note that the levels of urbanization do not change in the data-set, as they are fixed to the 2013 levels defined by the USDA. As a result, they can be completely ignored in the fixed-effects setting of the modelling. However urbanization will be explore further in the robustness checks to measure the drivers of the impact of healthcare on crime.
 
-Pairwise correlations of the different variables of interest are taken to provide a preliminary view of the data. The figure is below. Oh the horror!
+Pairwise correlations of the different variables of interest are taken to provide a preliminary view of the data. Table 1 below displays the pairwise correlations. Total Crime in a county and the number of uninsured individuals (# Uninsured) are highly correlated at 0.87, a sign that bodes well for the study. On the other hand, the percentage of uninsured individuals do not show any significant levels of correlation with crime. The disagreement between the absolute uninsured individuals and uninsured rates is further complicated by the low levels of correlation between the two, a fact that is theoretically impossible. **Unfortunately this speaks to the difficulties of SAHIE data; it is costly to collect data on the number of individuals residing in a county every year**. The conflict forces the author to use the number of uninsured individuals as the primary variable measuring access to healthcare, though the percentage of individuals will be further used to test the robustness of the results.
+
+Amongst the control variables, only population of a county shows strong and positive relationship with crime. This is not surprising. Population in the US tend to be clustered in the large metro cities, which also are home to most criminal activity. This will be recurring control in the study.
+
+\pagebreak
+
+```{r corr_plot, results="asis"}
+import('Data/merged-data.json') %>%
+  select(GRNDTOT, NUI, PCTUI, MedianIncome,
+         minority_pct, CPOPARST) %>%
+  rename(`Total Crime` = GRNDTOT,
+         `(#) Uninsured` = NUI,
+         `(%) Uninsured` = PCTUI,
+         `Median Income` = MedianIncome,
+         `(%) Minorities` = minority_pct,
+         `Population` = CPOPARST) %>%
+  cor(use = "complete.obs") %>%
+  apply(1, function(x) round(x, 2)) %>%
+  stargazer(header = F, float.env = "sidewaystable",
+            title = "Correlations between variable of interest",
+            align = T)
+```
+
+\pagebreak
 
 # Results
+
+## Does access to healthcare reduce crime?
 
 # Robustness Checks; What drives the results?
 
