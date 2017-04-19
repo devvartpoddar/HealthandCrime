@@ -247,22 +247,25 @@ term.recode <- data.frame(
 
 final.data <- import('Data/merged-data.json') %>%
   arrange(UID, year) %>%
-  group_by(UID) %>%
-  mutate(lag.crime = dplyr::lag(GRNDTOT)) %>%
   select(-iprcat) %>%
-  ungroup() %>%
-  mutate(obamacare = ifelse(year >= 2013, TRUE, FALSE))
+  mutate_at(vars(matches("GRNDTOT|NUI|CPRPARST|Median|black|unemployed")),
+            funs(log)) %>%
+  filter(GRNDTOT != -Inf, NUI != -Inf)
 
-base_model <- plm(GRNDTOT ~ lag.crime + NUI + CPOPARST + MedianIncome,
-                  data = final.data)
+base_model <- plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome,
+                  data = final.data, model = "fd") %>%
+  coeftest(vcovHC)
 
-model_control <- plm(GRNDTOT ~ lag.crime + NUI + CPOPARST + MedianIncome +
-                     unemployed_pct + minority_pct,
-                     data = final.data) 
+model_control <- plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome +
+                     unemployed + blacks_and_hispanics,
+                     data = final.data) %>%
+  coeftest(vcovHC)
 
-model_year <-  plm(GRNDTOT ~ lag.crime + NUI + CPOPARST + MedianIncome +
-                     unemployed_pct + minority_pct + as.factor(year),
-                     data = final.data) 
+model_year <-  plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome +
+                     unemployed + blacks_and_hispanics + as.factor(year),
+                     data = final.data, model = "fd") %>%
+  coeftest(vcovHC) 
+
 rm(final.data)
 ```
 

@@ -20,16 +20,14 @@ unemployment.data <- import("Data/unemployment.json") %>%
   filter(year >= 2005)
 
 # Data to recode urbanisation
-recode.data <- data.frame(
-  UIC_2013 = c(1:12),
-  Urban = c(1, 3, 2, 6, 4, 6, 6, 5, rep(6, 4))
-  )
+recode.data <- import('Raw Data/Others/urban.xls', sheet = 3)
 
-urban.data <- import('Raw Data/Others/Urban.xls') %>%
-  select(FIPS, UIC_2013) %>%
+urban.data <- import('Raw Data/Others/urban.xls')  %>%
+  select(FIPS, RUCC_2013) %>%
+  mutate(FIPS = as.numeric(FIPS)) %>%
   merge(recode.data) %>%
-  select(-UIC_2013) %>%
-  mutate(FIPS = as.numeric(FIPS))
+  select(-RUCC_2013, - Description) %>%
+  rename(urban = `Urban / Rural`)
 
 race.data <- import('Data/race_all_ages.json') %>%
   filter(year >= 2005) %>%
@@ -56,8 +54,7 @@ final.data <- merge(crime.data, health.data,
   merge(urban.data, by.x = "UID", by.y = "FIPS", all = T) %>%
   merge(race.data, by.x = c("UID", 'year'),
     by.y = c("FIPS", 'year'), all.x = T) %>%
-  mutate(white_pct = white / CPOPARST,
-      minority_pct =1 - white_pct) %>%
+  mutate(blacks_and_hispanics = black + other) %>%
       select(-black, -white, -other)
 
 export(final.data, 'Data/merged-data.json')
