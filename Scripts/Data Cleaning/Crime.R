@@ -3,7 +3,7 @@
 # List of files
 crime.path <- 'Raw Data/Crime Data/'
 
-crime.zip <- list.files(crime.path)
+crime.zip <- list.files(crime.path, pattern = ".zip")
 
 # fwf widths
 fwf <- import('Raw Data/fwf_widths.xlsx')
@@ -14,6 +14,8 @@ for (x in 1:length(crime.zip)) {
   # Extracting the year
   temp.year <- crime.zip[x] %>% stri_split_fixed('.zip') %>%
     unlist() %>% .[1] %>% as.numeric()
+  
+  cat("starting year ---------- ", temp.year, "\n")
 
   # Creating temporary dir to extract the data
   temp.dir <- paste0(crime.path, 'tmp')

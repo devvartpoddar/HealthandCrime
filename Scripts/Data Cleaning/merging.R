@@ -6,7 +6,7 @@ crime.data <- import('Data/Crime-data.json') %>%
   filter(year >= 2005) %>%
   select(year, FIPS_ST, FIPS_CTY, CPOPARST,
       GRNDTOT:BURGLRY, VANDLSM, DRUGTOT,
-      VAGRANT, RUNAWAY)
+      VAGRANT, RUNAWAY) 
 
 health.data <- import('Data/SAHIE-data.json') %>%
   select(-version, -agecat, -racecat, -sexcat, -geocat) %>%

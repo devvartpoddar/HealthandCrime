@@ -2,19 +2,18 @@
 fontsize: 12
 geometry: margin=3cm
 
-header-includes:
-- \usepackage{rotating}
-- \usepackage{dcolumn}
-
 link-citations: yes
 citecolor: blue
 csl: apa.csl
 
 bibliography: references.bib
+classoption: twoside
 
 output:
   pdf_document:
     citation_package: natbib
+    includes:
+      in_header: header.tex
 ---
 
 ```{r setup, include=FALSE}
@@ -34,69 +33,79 @@ source('packages.R')
 
 > Barack Obama, Joint Session of the Congress, September 2009
 
-There are few issues which have divided America more than that of healthcare. Universal access to healthcare has been the Holy Grail of American Politics for decades. The idea was first mooted by President Theodore Roosevelt in his unsuccessful campaign in 1912. President Truman spoke of the need for universal healthcare in his speech to the State of the Union in 1949 but was ultimately unsuccessful. Since, multiple Presidents - Democrats and Republicans, have attempted to increase coverage for millions of uninsured Americans, but none came close to the idea of universal healthcare than the Affordable Care Act (ACA), signed by President Barack Obama.
+There are few issues, which have divided America more than that of healthcare. Universal access to healthcare has been the Holy Grail of American Politics for decades. The idea was first mooted by President Theodore Roosevelt in his unsuccessful campaign in 1912. President Truman spoke of the need for universal healthcare in his speech to the State of the Union in 1949 but was ultimately unsuccessful. Since, multiple Presidents - Democrats and Republicans, have attempted to increase coverage for millions of uninsured Americans, but none came close to the idea of universal healthcare than the Affordable Care Act (ACA), signed by President Barack Obama.
 
-The ACA, or as it is know colloquially - Obamacare, ranks amongst the largest healthcare reforms in the United States since the introduction of Medicare and Medicaid programs by President Johnson. Amongst its most popular provisions, it banned insurance firms from denying healthcare coverage to individuals with pre-existing conditions and provided subsidies for healthcare purchased through insurances exchanges for the poor. ACA decreased the rate of uninsured individuals from 16% in 2010 when the bill was signed into law, to 9.1% in 2015 - a decline of nearly 43% percent [@Obama2016].    
+The ACA, or as it is known colloquially - Obamacare, ranks amongst the largest healthcare reforms in the United States since the introduction of Medicare and Medicaid programs by President Johnson. Amongst its most popular provisions, it banned insurance firms from denying healthcare coverage to individuals with pre-existing conditions and provided subsidies for healthcare purchased through insurances exchanges for the poor. ACA decreased the rate of uninsured individuals from 16% in 2010 when the bill was signed into law, to 9.1% in 2015 - a decline of nearly 43% percent [@Obama2016].    
 
-There have been several papers that have researched the impact of Obamacare, and access to healthcare in general, on issues outside the debate of health economics, such as improved financial security [@Dussalt2016], increased wages [@Dillender2014] or **xxxx**. However few authors have studied the impact of healthcare on crime and criminal activity.  
+Previous studies focused on the impact of Obamacare, and access to healthcare in general, on issues outside the debate of health economics, such as improved financial security [@Dussalt2016], increased wages [@Dillender2014] or **xxxx**. However few authors study the impact of healthcare on crime and criminal activity.  
 
 Crime has long been studied by economists and sociologists due to the costs it imposes upon society. Gary Becker won the prestigious Nobel Memorial Prize in Economics for his contribution in extending the *"domain of microeconomic analysis to a wide range of human behaviour and interaction, including nonmarket behaviour"*, including the fields the sociology criminology^[Source: <http://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1992/becker-facts.html>]. Becker approached the issue of crime as a trade-off between *risk* and *reward* for an individual. Crime was  rationally motivated action by individuals who faced a high rewards upon engaging in a criminal activity, for her / his level of risk. The primary constraining factor of crime would then be a form of punishment; increasing the risk to criminals by investing in law and order institutions.
 
 The author disagrees with these findings. Increasing punishment of criminal activity through the mandatory minimum laws in the United States failed to reduce crime. In contrast to its original intent, scholars have found that the mandatory minimum laws have had a disproportionate impact on the minorities in the United States, creating an image of *super-predators* for an entire race of individuals [**Juvenile life without parole**].
 
-The author looks at crime, not as a disease that needs to be cured, but rather as a symptom of a larger cause. This is not to say that all forms of crime are caused by social hardship. It would be naive to assume that some forms of crime are not caused due to the hint of a large reward or a moment of indiscipline. However the author believes that crime can be reduced without the need of a drastic institutional buildup by reducing the causes of social hardship that motivate crime. Such a tool would be at a lesser cost to society, both financially and humanely, than the cost of a violent war on crime. 
+The study looks at crime, not as a disease that needs to be cured, but rather as a symptom of a larger cause. This is not to say that all forms of crime are caused by social hardship. It would be naive to assume that some forms of crime are not caused due to the hint of a large reward or a moment of indiscipline. However the study believes that crime can be reduced without the need of a drastic institutional buildup by reducing the causes of social hardship that motivate crime. Such a tool would be at a lesser cost to society, both financially and humanely, than the cost of a violent war on crime. 
 
-One of the main motivations of this study is to prove an implication of healthcare reform that has been largely ignored; the reduction of crime as millions of Americans earned access to the healthcare system. The study hopes to rectify the gaps in economic literature that has been woefully lacking in the debate. **ADD findings after the data and consistency checks are over.**  
+Indeed, the results of the study indicates the elasticity of healthcare on crime to be bound between $[0, 0.40]$. Health care reforms which add coverage to mllions of uninsured individuals reap a double divident; reduction in uninsured rates as well as a marginal reduction in crime levels. These results are robust to social and economic controls, as well as short and long term time horizons. Furthermore, the results indicate flaws in both economic and sociological theories of crime as changes in criminal activity due to healthcare coverage do not conform to the patterns identified by either strands of theory. Crime is neither symmetrical to exogenous and negative stimuli, nor does it focus on the maximisation of financial rewards. There is a gap in our understanding of crime, and social determinants of crime, which this study seeks to fill.
 
-# Literature Survey
+The study is divided into 6 sections. The current section introduces the question of healthcare coverage and its impact on crime. [Section II](#lit.review) summarises economic and sociological literature focusing on the determinants of crime, and details their findings. [Section III](#method) formally introduces the methodology of modelling crime and describes the sources of data for the study. [Section IV](#results) displays the results of the study, while [Section V](#robust) tests them for robustness. Finally, [Section VI](#conclude) concludes and lays out questions for further research.
+
+# Literature Survey {#lit.review}
 
 ## Social Determinants of Crime
 
-Crime has been extensively studied in economic literature, @Becker1968 being the authoritative text on the rational of crime. Crime is modeled as an economic activity through an equilibrium of demand and supply of crime, an equilibrium which may be shifted through exogenous tools available at the hands of policymakers. Two particular tools available to lawmakers is the increase in expenditure on law and order institutions which *"help determine the probability that and offense is discoverd"* [@Becker1968, pg 70]; and the size of punishment at conviction. However the author disagrees with aggregating crime as an outcome of a rational decision making process. Crime is not always rational, often caused by personal grievances or negative externalities. Furthermore, the economics of crime and punishment do not take into account differences in crime. Crimes such as jaywalking are of lesser threat than homicide. However under the rational crime approach, the differences would align only in terms of the reward achieved by the criminal. **The easiset approach may then be to target high rates of punishment for all types of crime.**
+Crime has been extensively studied in economic literature, @Becker1968 being the authoritative text on the rational of crime. Crime is modeled as an economic activity through an equilibrium of demand and supply of crime, an equilibrium which may be shifted through exogenous tools available at the hands of policymakers. Two particular tools available to lawmakers are the increase in expenditure on law and order institutions which *"help determine the probability that and offense is discoverd"* [@Becker1968, pg 70]; and the size of punishment at conviction. However the author disagrees with aggregating crime as an outcome of a rational decision making process. Crime is not always rational, often caused by personal grievances or negative externalities. Furthermore, the economics of crime and punishment do not take into account differences in crime. Crimes such as jaywalking are of lesser threat than homicide. However under the rational crime approach, the differences would align only in terms of the reward achieved by the criminal. The easiset approach may then be to target high rates of punishment for all types of crime.
 
-Several studies have pointed out the flaws of increasing policing as a policy to deter crime. The popularity of mandatory minimum laws increased sentencing length, narrowed the differences between sentences for crimes between marijuana and opiates, increased incarceration of younger *criminals* and a disproportionate impact on African American and Hispanic societies [@Forer1994, @Meierhoefer1992]. Justice Kennedy, Associate Justice at Supreme Court of the United States himself delivered the following remarks at the 2003 Annual American Bar Association Meeting^[Source: <https://www.supremecourt.gov/publicinfo/speeches/sp_08-09-03.html>];
+Several studies point to the flaws of increasing policing as a policy to deter crime. The popularity of mandatory minimum laws increased sentencing length, narrowed the differences between sentences for crimes between marijuana and opiates, increased incarceration of younger *criminals* and a disproportionate impact on African American and Hispanic societies [@Forer1994, @Meierhoefer1992]. Justice Kennedy, Associate Justice at Supreme Court of the United States himself delivered the following remarks at the 2003 Annual American Bar Association Meeting^[Source: <https://www.supremecourt.gov/publicinfo/speeches/sp_08-09-03.html>];
 
 > *It requires one with more expertise in the area than I possess to offer a complete analysis, but it does seem justified to say this: Our resources are misspent, our punishments too severe, our sentences too long. [...] In my view the guidelines were, and are, necessary. Before they were in place, a wide disparity existed among the sentences given by different judges, and even among sentences given by a single judge. As my colleague Justice Breyer has pointed out, however, the compromise that led to the guidelines led also to an increase in the length of prison terms. We should revisit this compromise. The Federal Sentencing Guidelines should be revised downward.*
 
-The divergence in economic theory of punishment, and empirical evidence has led a rise in sociological theories to explain the determinants of crime. Amongst the most popular sociological approach refers to the General Strain theory post Agnew's defense of the theory [@Agnew1992]. Strain theory *typically focused on relationships in which others prevent the individual from achieving positively valued goals* [@Agnew1992, pg 49]. @Agnew1992 further broadened the theory to include negative stimuli such as **xxx**. In a continuation of the defense written 10 years after the publication of his original paper, Agnew defines the forms of relationships that would aggravate crime. Strains would lead to crime if they match 4 characteristics; they are seen as unjust; are seen as high in magnitude; are associated with low social control; and create a pressure to engage in criminal activity [@Agnew2001].
+The divergence in economic theory of punishment, and empirical evidence has led a rise in sociological theories to explain the determinants of crime. Amongst the most popular sociological approach refers to the General Strain theory post Agnew's defense [@Agnew1992]. Strain theory *typically focused on relationships in which others prevent the individual from achieving positively valued goals* [@Agnew1992, pg 49]. @Agnew1992 further broadened the theory to include negative stimuli such as **xxx**. In a continuation of the defense written 10 years after the publication of his original paper, Agnew defines the forms of relationships that would aggravate crime. Strains would lead to crime if they match 4 characteristics; they are seen as unjust; are seen as high in magnitude; are associated with low social control; and create a pressure to engage in criminal activity [@Agnew2001].
 
-Empirical studies have shown mixed results regarding the strain theory. Anger plays a particularly crucial role as a negative stimuli, and several research studies have found these effects to be significant, particularly amongst student and youth populations [@Brezina2001]. However the same studies find that while conflict may be predicted by anger, other forms of aggressive behavior are less motivated by negative strains. On a similar note, studies looked at stresses such as unemployment as a determinant of crime and found it to be positively correlated with crime [@Aaltonen2011]. Education was also significant, which does not feature into the stress theory.
+Empirical studies have shown mixed results regarding the strain theory. Anger plays a crucial role as a negative stimuli, and several research studies have found these effects to be significant, particularly amongst student and youth populations [@Brezina2001]. However the same studies find that while conflict may be predicted by anger, other forms of aggressive behavior are less motivated by negative strains. On a similar note, studies looked at stresses such as unemployment as a determinant of crime and found it to be positively correlated with crime [@Aaltonen2011]. Education was also significant, which does not feature into the stress theory.
 
-Another interesting theory to come out of sociology is the social control theory of crime. The theory explains how people respond in absence of personal and social controls, leading to deviant behavior. An aspect of the social control theory that stands out in the literature is the self-help theory. Crime is a form of violent self-help, often caused by private grievances rather than hopes of public, or private, gains [@Black1983]. This theory is interesting, and extends some of the ideas laid forward by the general strain theory. Crime is caused due to negative stimuli, and can be controlled by reducing the exposure to such stimuli.
+Another interesting theory to come out of sociology is the social control theory of crime. The theory explains how people respond in the absence of personal and social controls, leading to deviant behavior. An aspect of the social control theory that stands out in the literature is the self-help theory. Crime is a form of violent self-help, often caused by private grievances rather than hopes of public, or private, gains [@Black1983]. This theory extends some of the ideas laid forward by the General Strain Theory. Crime is caused due to negative stimuli, and can be controlled by reducing the exposure to such stimuli.
 
-The author partially agrees with these frameworks. Crime is a complex phenomenon, which can be explained by a variety of factors. Presupposing that argument, is that while some crimes may be entirely rational (following Becker) others are not, and are caused by exogenous or endogenous changes in strains. The distribution of crimes between the two *motivators* would be impossible to predict, but it will definitely help to use alternative approaches to fight crime than an institutional buildup. Unfortunately, none of the papers look at the access to healthcare as a stress inducing factor. While they match several of the characteristics laid out by Agnew, access to healthcare has been ignored as a powerful tool available at the hands of policy makers to deter crime.
+The author partially agrees with these frameworks. Crime is a complex phenomenon, which can be explained by a variety of factors. Presupposing that argument, is that while some crimes may be entirely rational (following Becker) others are not, and are caused by exogenous or endogenous changes in strains. The distribution of crimes between the two *motivators* would be impossible to predict, but it will definitely help to use alternative approaches to fight crime than an institutional buildup. Unfortunately, none of the papers look at the access to healthcare as a stress-reducing factor. While they match several of the characteristics laid out by Agnew, access to healthcare has been ignored as a powerful tool available at the hands of policy makers to deter crime.
 
 ## Public Healthcare; Benefits and Weaknesses
 
-Meanwhile, there have been several studies that look at the benefit of health and access to proper healthcare. Research has found expansion of Medicaid in the 1980s increased tax revenue for the states. The study found reimbursements of upto 56% per dollar spent on Medicaid by children who are then eligible for the program[@Brown2015]. Amongst financial gains, studies have shown increased affordability due to health coverage among individuals[@Sommers2016, @Hu2016] and a positive effect on national income at a macroeconomic level [@Strittmatter2011] through introduction of variants of public provided healthcare. 
+Meanwhile, there have been several studies that look at the benefit of health and access to proper healthcare. Research has found expansion of Medicaid in the 1980s increased tax revenue for the states. The study found reimbursements of upto 56% per dollar spent on Medicaid by children who were then eligible for the program [@Brown2015]. Amongst financial gains, studies have shown increased affordability due to health coverage among individuals[@Sommers2016, @Hu2016] and a positive effect on national income at a macroeconomic level [@Strittmatter2011] through introduction of variants of public provided healthcare. 
 
 Along with the spillover effects, there is also the direct impact of increasing access to health care on individual health. Improved access to healthcare was found to have reduced non-discretionary financial spending, reduced likelihood of emergency visits, and reported higher numbers of individuals reporting better health [@Sommers2016]. The benefit was accrued even without increasing availability and waiting times at health professionals [@TheCommonwealthFund2016].
 
-### Bringing them together; Does access to healthcare impact crime?
+### Connecting the dots; Does access to healthcare impact crime?
 
-The spillover effects of improved access to healthcare lend to the question; are there positive externalities in reducing crime? Unfortunately there are few authors which have studied this channel. The most promising of the researches, studied the impact of the Nurse-Family Partnership (NFP), a community health program aiming at providing service to low income and first-time mothers. NFP, using registered and trained nurses, provide continuous care through home visits from pregnancy for upto 3 years after pregnancy. Longitudinal studies, using randomized control trials, found that female children in the treatment groups were less likely to be arrested (relative risk of 0.33), had fewer lifetime arrests (relative risk of 0.18) and were less dependent on Medicaid (relative risk of 0.4) compared to individuals without visits from the NFP [@Eckenrode2010]. Studies also reported a reduction in the incidence of child abuse, though the results were not highly significant [@Eckenrode2000]. 
+The spillover effects of improved access to healthcare lend to the question; are there positive externalities in increasing healthcare coverage towards reducing crime? Unfortunately there are few authors which have studied this channel. The most promising of the researches, studied the impact of the Nurse-Family Partnership (NFP), a community health program aiming at providing service to low income and first-time mothers. NFP, using registered and trained nurses, provide continuous care through home visits from pregnancy for upto 3 years after. Longitudinal studies, using randomized control trials, found that female children in the treatment groups were less likely to be arrested (relative risk of 0.33), had fewer lifetime arrests (relative risk of 0.18) and were less dependent on Medicaid (relative risk of 0.4) compared to individuals without visits from the NFP [@Eckenrode2010]. Studies also reported a reduction in the incidence of child abuse, though the results were not highly significant [@Eckenrode2000]. 
 
-Similarly, a study prepared for the Office of National Drug Control Policy, found lower rates of rearrests, or recidivism, upon individuals offered drug treatment services; *"Drug treatment services both reduce the incidence of criminal behavior and increase the overall length of crime-free time for offenders"* [@Taxman1998]. This has also been corroborated by recent studies that recommended reforming the criminal justice system in the United States by improving access to community-based care; both during incarceration and post-release [@Rich2014]. Finally trained health professionals have found similar impact of providing insurance to at-risk individuals. Dr Katherine Michael, a psychologist and director of Community Behavioral Health for the Western Connecticut Health Network, found the Community Cares Team (CCT); a collaborative effort among doctors, nurses and community health advocates to reduce emergency room recidivism. She remarks that *"these patients are not insured so they lack primary, preventative care. One of our first steps is to get them insured if they can be, and the reason they’re coming in less often is that they’re getting primary care"* ^[Source: <http://www.thehour.com/wilton/article/At-Norwalk-Hospital-reducing-recidivism-through-8317801.php>].
+Similarly, a study prepared for the Office of National Drug Control Policy, found lower rates of rearrests, or recidivism, upon individuals offered drug treatment services; *"Drug treatment services both reduce the incidence of criminal behavior and increase the overall length of crime-free time for offenders"* [@Taxman1998]. This has also been corroborated by recent studies that recommended reforming the criminal justice system in the United States by improving access to community-based care; both during incarceration and post-release [@Rich2014]. Finally trained health professionals have found similar impact of providing insurance to at-risk individuals. Dr Katherine Michael, a psychologist and director of Community Behavioral Health for the Western Connecticut Health Network, founded the Community Cares Team (CCT); a collaborative effort among doctors, nurses and community health advocates to reduce emergency room recidivism. She remarks that *"these patients are not insured so they lack primary, preventative care. One of our first steps is to get them insured if they can be, and the reason they’re coming in less often is that they’re getting primary care"* ^[Source: <http://www.thehour.com/wilton/article/At-Norwalk-Hospital-reducing-recidivism-through-8317801.php>].
 
 It is unfortunate that these studies have only been limited to at-risk populations, either of extremely low income families (NFP) or on incarcerated individuals. The mechanisms between the populations studied, and the goal of this study, would not differ greatly. Improvements in health and financial stability, through access to affordable healthcare, reduce exogenous, and negative, stimuli faced by individuals. Following the General Strain theory, this thereby reduces the propensity of individuals to engage in criminal activity. Unfortunately, similar to the literature on crime, there is little focus of the impact of improved access to health, of the larger population, on crime. 
 
-# Methodology
+# Methodology {#method}
 
 ## Modelling Crime
 
-The author tests if changes in the rates of uninsured individuals in the United States impact the conditional mean of crime in the different regions. Crime is modeled as an AR(1) process, with the model as defined as in equation 1 below.
+The study tests if changes in the rates of uninsured individuals in the United States impact the conditional mean of crime in the different regions. Crime is modelled using a fixed effects regression with logged linear variables, allowing the model to estimate the elasticity of crime to changes in healthcare coverage. Formally, the model is defined as;
 
 \begin{equation}
-crime_{i, t} = \alpha_{0} crime_{i, t-1} + \beta_{1} insurance_{i,t} + \sum \beta_{e} E_{i,t} + \sum \beta_{d} D_{i,t} + \epsilon_{i} + \epsilon_{t} 
+\ln crime_{i, t} = \beta_{fe} \ln insurance_{i,t} + \sum \beta_{e} \ln E_{i,t} + \sum \beta_{d} \ln D_{i,t} + \mu_{i} + \epsilon_{it}
 \end{equation}
 
-In equation (1), $\alpha_{0}$ captures the propensity of crime; i.e the occurrence of crime in a county $i$ due to historical crime in the region. This can also be viewed as the cost for a criminal to shift criminal activity. Creation of criminal infrastructure is costly, be it in terms of time spent to attract new recruits or financially; the cost spent as bribes to unethical policemen. While the propensity will mainly capture the costs to organised crime, it includes the costs for an individual criminal entrepreneur. 
+$\beta_{fe}$ is our main coefficient of interest. It captures the health elasticiy of crime, i.e the % increase (decrease) in crime due to an increase (decrease) in healthcare. For the study, the variable is measured using the number of uninsured Americans. Therefore, *a priori*, it is assumed to be strictly greater than zero, $\beta_{fe} \gg 0$, i.e reduction of uninsured individuals, through access to healthcare, reduces crime and vice-versa. 
 
-$\beta_{1}$ is our main coefficient of interest. It would capture the impact of increasing (or decreasing) access to healthcare on criminal activity. For the study, the variable is measured using the rate of uninsured Americans. Therefore, *a priori*, it is assumed to be strictly lesser than zero, i.e $\beta_{1} \gg 0$, i.e reduction of uninsured individuals, through access to healthcare, reduces crime and vice-versa. 
+Furthermore, $E$ refers to a vector of economic controls such as the median income and poverty rate in county $i$. Literature is ambivalent on the impact of economic controls, with some research finding a positive impact on crime [@Patterson1991, @Hsieh1993] and others negative or non significant results [@Rushton2009]. Finally, $D$ refers to a vector of social and demographic controls such as the population of a county [@Harries2006], number of blacks or hispanics in a county and the rural-urban divide [@Shelley1981]. All of these variables have been found to have an impact on crime rates.  
 
-Furthermore, $E$ refers to a vector of economic controls such as the median income and poverty rate in county $i$. the literature is ambivalent on the direction of the impact here, with some scholars finding a positive impact on crime [@Patterson1991, @Hsieh1993] and others negative or non significant results [@Rushton2009]. Finally, $D$ refers to a vector of social and demographic controls such as the population of a county [@Harries2006], percentage of minorities in a county and the rural-urban divide [@Shelley1981]. All of these variables have been found to have an impact on the level of crime in a regions.  
+## Impact of ACA Act, 2010
 
-**ASK PROF TRAXLER FOR INSTRUMENTAL REGRESSIONS**
+The model above is further refined to study the specific impact of the ACA act, i.e. Obamacare, on crime rates in the US. The ACA act was signed in 2010, with the enrollments of ACA backed health insurance, commencing only in the October of 2013. Therefore the model is limited only to the years in-between 2011 and 2014. The data is further collapsed into a pre-post experimental design, with the years before 2013 acting as a control group for the period after the commencement of the ACA subsidies (2013 onward). Formally the model is defined by;
+
+\begin{equation}
+\Delta \ln crime_{i} = \beta_{fd} \Delta \ln insurance_{i} + \sum \beta_{e} \Delta \ln E_{i} + \sum \beta_{d} \Delta \ln D_{i} + \epsilon
+\end{equation}
+
+such that the difference is taken for the years 2011-12 and 2013-14. The first difference approach to measure the impact of ACA has two benefits; *firstly* by reducing the period of study to only the periods immedietly before and after the introduction of ACA, it ignores endogenous changes in healthcare coverage post 2011. *Secondly* the first difference approach is a better fit for the data given an AR(1) process; i.e crime in period $t$ is dependent on the level of crime in period $t-1$. The data on crime levels show an affinity towards the AR(1) process, a result that may bias the fixed effects approach.
+
+The study will therefore use both the fixed effects and the first differences to model crime. While the fixed effects approach may be biased due to presence of auto-correlation, it outperform first differences for more than 2 time periods. Moreover, the two approaches allow the study to obtain both short-term and long term elasticities of crime^[First difference regressions are assumed to provide short term elasticities, while fixed effects approach is assumed to caliberate the long term elasticities. However it is important to take the definitions of short term and long term horizons with a grain of salt. The elasticities obtained by the first difference regression will be limited to only the impact of healthcare around the period of ACA, which may be higher than outside reform. However, since the goal of the study is to structure the discussion of public healthcare reform, and for the sake of brevity, the elasticities will be refered to in the context of a time horizon as well]. 
 
 ## Sources of Data
 
@@ -106,7 +115,7 @@ There is often a delay between the time a crime is reported, and the time of the
 
 The data on crime, gathered through the UCR Program, is comprehensive and contains over 20 sub-divisions of criminal activity; ranging from violent crimes such as burglary to drug possession and disorderly conduct. Due to the wide range of criminal behavior, the study limits itself to the study of violent crimes and drug possession, along with vagrancy. Impact of healthcare of other forms of crime is left to future research.  Figure 1 below provides a concise view of the changing criminal activity in the United States.
 
-```{r crime_us, fig.cap="Trends in crime in the United States"}
+```{r crime_us, fig.cap="Trends in crime in the United States", fig.height = 2.5}
 crime.data <- import("Data/Crime-data.json") %>%
   select(year, FIPS_ST, CPOPARST, GRNDTOT) %>%
   group_by(year, FIPS_ST) %>%
@@ -138,7 +147,7 @@ rm(crime.data, crime.us)
 
 The different states in United States witness a huge variation in their crime rates. However, as the national average shows, crime is undoubtedly reducing in its trend, though the reduction is only marginal. There are also marginal changes in the composition of criminal activity. Figure 2 showcases the changes in the number of crimes related to the possession of drugs as a percentage of the total crimes reported. There is a small upward trend post 2013, corresponding with the epidemic of heroin in the United States^[Source: <https://www.nytimes.com/interactive/2015/10/30/us/31heroin-deaths.html>]. However it presents little evidence of a large difference in the distribution of criminal activity.  
 
-```{r crime_by_drug, fig.cap="Trends in drug related crime in the United States"}
+```{r crime_by_drug, fig.cap="Trends in drug related crime in the United States", fig.height = 2.5}
 import("Data/Crime-data.json") %>%
   select(year, GRNDTOT, DRUGTOT) %>%
   group_by(year) %>%
@@ -190,11 +199,37 @@ import("Data/merged-data.json") %>%
   )
 ```
 
-Contrary to data on criminal activity, there is a marked change in the rates of uninsured individuals in America. Uninsured rates fell drastically in Southern America, though there are still some pockets on uninsured in Texas. Texas may be an outlier as Republicans under Governor Rick Perry refused to expand Medicaid as directed by the ACA^[Source: <http://america.aljazeera.com/articles/2014/10/20/the-human-cost-oftexasrefusaltoexpandmedicaid.html>].  Though it would not bias the results in he fixed effects framework, a dummy variable for Texas would be created during robustness checks to measure the impact of the loss of healthcare coverage in Texas.
+Contrary to data on criminal activity, there is a marked change in the rates of uninsured individuals in America. Uninsured rates fell drastically in Southern America, though there are still some pockets on uninsured in Texas. It also seems to have fallen in rural areas more than urban areas. What does this mean for their relationship?
+
+Figure 4 below graphs the changes in crime and healthcare coverage between the years 2006 and 2014 for the different states in United States. The first glance of the data is dissapointing. While both crime levels and the number of uninsured individuals have falled considerably, there is little evidence of a causal relationship. 
+
+```{r crime_health_change, fig.cap="Relationship between crime and healthcare"}
+import('Data/merged-data.json')  %>%
+  arrange(UID, year) %>%
+  select(year, GRNDTOT, NUI, FIPS_ST) %>%
+  filter(year == 2006 | year == 2014) %>%
+  group_by(FIPS_ST, year) %>%
+  summarise_all(funs(mean(., na.rm = T))) %>%
+  group_by(FIPS_ST) %>%
+  mutate(t = lag(NUI),
+         NUI_pct = (NUI - t) / t,
+         NUI_pct = ifelse(is.finite(NUI_pct), NUI_pct, NA),
+         t = lag(GRNDTOT),
+         GRNDTOT_pct = (GRNDTOT - t) / t,
+         GRNDTOT_pct = ifelse(is.finite(GRNDTOT_pct), GRNDTOT_pct, NA)) %>%
+  filter(FIPS_ST != 12 , FIPS_ST != 17) %>%
+  ggplot(aes(x = NUI_pct, y = GRNDTOT_pct)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = 2, colour = "red") +
+  geom_vline(xintercept = 0, linetype = 2, colour = "red") +
+  labs(x = "% change in Uninsured Individuals",
+       y = "% change in Total Crime levels") +
+  theme_classic()
+```
 
 ## Income, Geographic and Social Characteristics
 
-Data on income, geographic and social characteristics for the counties were collected to serve as an control for the study. Median Income for every county were derived from the Small Area Personal Income estimates (SAPIE) maintained by the Census Bureau. They also maintain a measure of the poverty rate in the different counties which will be explored further in the robustness checks.
+Data on income, geographic and social characteristics for the counties were collected to serve as a control for the study. Median Income for every county waws derived from the Small Area Personal Income estimates (SAPIE) maintained by the Census Bureau. They also maintain a measure of the poverty rate in the different counties which will be explored further in the robustness checks.
 
 Social data pertaining to the division of the different races in the US was collected from the Surveillance, Epidemiology, and End Results (SEER) Program of the National Cancer Institute. SEER collects data mainly on cancer cases in the United States, but maintaining expertise in collection of population-based statistics. They have a comprehensive distribution of data on race from 1969. For the purpose of the study, a variable measuring the percentage of minorities^[Disregarding the sociological implications for a minute, minorities is defined as the number of non-white individuals. From SEER, it is created by adding the number of African Americans with the number of Asians and Native Indians, divided by the total population of the county] is created. Research has shown minority dominated areas to face higher premium costs [@Angwin2017, @Ong2007], higher rates of incarceration [@Blumstein1982] and [**xxxx**].  It would therefore be of interest to see if these areas do feature higher rates of crime. 
 
@@ -206,98 +241,137 @@ Pairwise correlations of the different variables of interest are taken to provid
 
 Amongst the control variables, only population of a county shows strong and positive relationship with crime. This is not surprising. Population in the US tend to be clustered in the large metro cities, which also are home to most criminal activity. This will be recurring control in the study.
 
-\pagebreak
-
-```{r corr_plot, results="asis"}
-import('Data/merged-data.json') %>%
-  select(GRNDTOT, NUI, PCTUI, MedianIncome,
-         minority_pct, CPOPARST) %>%
-  rename(`Total Crime` = GRNDTOT,
-         `(#) Uninsured` = NUI,
-         `(%) Uninsured` = PCTUI,
-         `Median Income` = MedianIncome,
-         `(%) Minorities` = minority_pct,
-         `Population` = CPOPARST) %>%
-  cor(use = "complete.obs") %>%
-  apply(1, function(x) round(x, 2)) %>%
-  stargazer(header = F, float.env = "sidewaystable",
-            title = "Correlations between variable of interest",
-            align = T)
-```
-
-\pagebreak
-
-# Results
+# Results {#results}
 
 ## Does access to healthcare reduce crime?
 
-```{r model_1}
-term.recode <- data.frame(
-  term = c("lag.crime", "NUI", "CPOPARST", "MedianIncome", "unemployed_pct",
-            "minority_pct"),
-  variable = c("Total Crime (Lagged)", "# of Uninsured", "Population",
-               "Median Income", "% of Unemployed", "% of Minorities")
-) %>%
-  mutate(variable = as.character(variable),
-         variable = factor(variable, levels = c("Total Crime (Lagged)",
-                                                   "# of Uninsured", "Population",
-                                                   "Median Income", "% of Unemployed",
-                                                   "% of Minorities")),
-         term = as.character(term))
-
-final.data <- import('Data/merged-data.json') %>%
-  arrange(UID, year) %>%
-  select(-iprcat) %>%
-  mutate_at(vars(matches("GRNDTOT|NUI|CPRPARST|Median|black|unemployed")),
-            funs(log)) %>%
-  filter(GRNDTOT != -Inf, NUI != -Inf)
-
-base_model <- plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome,
-                  data = final.data, model = "fd") %>%
-  coeftest(vcovHC)
-
-model_control <- plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome +
-                     unemployed + blacks_and_hispanics,
-                     data = final.data) %>%
-  coeftest(vcovHC)
-
-model_year <-  plm(GRNDTOT ~ NUI + CPOPARST + MedianIncome +
-                     unemployed + blacks_and_hispanics + as.factor(year),
-                     data = final.data, model = "fd") %>%
-  coeftest(vcovHC) 
-
-rm(final.data)
+```{r model_fe}
+source("Scripts/Regressions/fixed-effects.R")
 ```
+```{r model_fe_table, results="hide"}
 
-```{r model_1_table, results = "hide"}
-stargazer(base_model, model_control, model_year, header = F, 
+stargazer(fe_models, header = F, 
           title = "Fixed Effect regressions", omit = "year", omit.stat = "f",
-          add.lines = list(c("Parametric Year Controls?", "N", "N",
-                             "Y")),
+          add.lines = list(c("Time Effects?", "N", "N", "N", "N",
+                             "Y"),
+                           c("N", fe_numbers$N),
+                           c("No of Panels", fe_numbers$panel)),
           out = "Final Paper/tex_files/fixed-effects.tex", out.header = F, align = T,
           notes = "Table displays clusetered standard errors using White (1980)",
-          notes.append = T)
+          notes.append = T, digits = 2, digits.extra = 0, table.placement = "!b",
+          dep.var.caption = "",
+          covariate.labels = c("Uninsured", "Population", "Blacks and Hispanics",
+                               "Median Income", "Unemployed"))
 ```
-
-**ADD Information for Number of observations, rsquared, and adjusted Rsquared. Unfrtunately need to write custm built function**
 
 \input{"tex_files/fixed-effects.tex"}
 
-## Has Obamacare helped?
+The first step of the study analyses the fixed effects approach, as layed out in equation (1), to test the primary thesis of the study. Data for the results was collected from the Uniform Crime Reporting (UCR) Program of the FBI, sourced from the National Archive of Criminal Justice Data. The total number of crimes reported in a county is modeled as a linear function of healthcare coverage, economic, social and demographical charcteristics. The results of the regressions are displayed in Table 1.
 
-**How do I explain the mechanism?**
+The base model (Model 1), regresses the number of individuals and the total population in a county on crime levels, logged to provide elasticity coefficients. The results demonstrate a positive and inelastic impact of increasing health coverage on crime levels in the United States. A 1% increase in the numer of uninsured individuals is correlated with approximately 0.25% increase in crime, significant at 1% confidence levels. These results are the first empirical quantification of the relationship between healthcare and crime. As stated earlier, there are no known studies that have looked at the direct, and indirect, impact of increasing health coverage on crime levels. While studies have made similar cases for providing healthcare on riky behaviour, these have been limited to study of at-risk youth and not the broader population.
 
-# Robustness Checks; What drives the results?
+The results of the base model (Model 1) are stable to the introduction of social and economic controls. Model (2) introduces  the number of blacks and hispanics in a county to the regression as an additional control of social and demographical characterstics, Model (3) introduces economic variables such as income and unemployment levels, while Model (4) introduces all controls. Elasticity of crime declines in each case to 0.13, 0.22  and 0.17 respectively,however remains significant at 1% level of significance. These effects diminish significantly with the addition of parametric time effects within the fixed effects approach (Model 5).
 
-## Using a different indicators to measure access to healthcare
+Amongst economic controls, the specifications disgree regarding the impact of income and unemployment levels on crime. Model (3), which introduces the economic variables, find a negative causal relationship of income, and unemployment, on crime. This is surprising given that income levels should, theoretically, follow an inverted trend with unemployment. Furthermore, rising unemployment levels should create upward preassure on crime levels, as the expectation of financial reward increases significantly, as does the oppurtunities for conflict. The effect remains significant even with addition of full controls. 
 
-## Using different indicators of crime
+The different specifications also find a significant impact of population levels on crime. This is consistent throughout the models, and follows some litterature [**refer to papers**]. Finally the results are also amblivalent in their findings towards the number of African Americans and Hispanics in a county. While model (2) estimates the elasticity as -0.39, model (5) finds a positive and inelastic relationship of 0.10.
 
-## Where is Texas?
+These results are a positive first step in analysing the impact of healthcare on crime. However the model, as it currently stands, may be prone to theoretical biases. There were no major healthcare reforms between 2006, the start of the data, till 2013 i.e. any changes in insurance levels during this period may therefore be due to endogeous and indiosyncratic biases which overshadow the true relationship between healthcare and crime^[There is a case to be made here, that exogenous shocks may have come in a format different than Health Care reforms or the expansion of Medicare and / or Medicaid. An argument can be made on using the recession of 2008 as an exogenous shock on insurance rates. The increase in economic uncertainty and resulting unemployment, could have created a temporary rise in uninsured, and thereby increase crime rates. However any exclusion restriction would be easily violated within this framework.]. As a result, the next steps are developed to focus the study on the Obamacare era, as well as check the results for consistency and robustness.    
 
-## 
+## Did Obamacare help reduce crime?
 
-# Conclusion
+```{r model_fd, results = "hide"}
+
+source("Scripts/Regressions/first-difference.R")
+```
+```{r model_fd_table, results="hide"}
+stargazer(fd_models, header = F, 
+          title = "First Difference regressions", omit = "year", omit.stat = "all",
+          add.lines = list(c("N", fd_numbers$N),
+                           c("No of Panels", fd_numbers$panel)),
+          out = "Final Paper/tex_files/first-difference.tex", out.header = F, align = T,
+          # notes = "Table displays clusetered standard errors using White (1980)",
+          # notes.append = T,
+          digits = 2, digits.extra = 0,
+          table.placement = "!b",
+          dep.var.caption = "",
+          covariate.labels = c("Uninsured", "Population", "Blacks and Hispanics",
+                               "Median Income", "Unemployed"))
+```
+
+\input{"tex_files/first-difference.tex"}
+
+The first step of the study, analysed the variations in crime and uninsured levels across multiple years. However, as stated earlier, this risks overshadowing of the true results by endogenous variations before the introduction of Obamacare. Therefore this section of the study is focused on the years immediately following and preceeding the start of the enrollment for Obamacare.
+
+The current section, reduces the focus of the study to the years 2012 to 2012 for the periods preceeding Obamacare, and 2013 and 2014 for the years preceeding it. The two groups are further collapsed to provide an aggregated dataset suitable for a first difference design as developed in equation (2). The findings are displayed in Table 2. 
+
+Similar to the approach above, the base model (Model 1) in Table 2 regresses the number of individuals and the total population in a county on crime levels, logged to provide elasticity coefficients. The results follow the primary specification; the elasticity of crime is caliberated to 0.37 i.e. a 1% increase (decrease) in uninsured levels between the years of 2011-12 and 2013-14 increase (decrease) crime levels by 0.37%. These results are stable to introduction of social controls, with the coefficients significantly unchanged from 0.37. However the elasticity diminishes drastically with the introducton of economic and fll controls, stabilising around 0.24.
+
+Results of the current approach also fit closer to the results obtained in previous studies. Income has a significant, and negative, impact on crime (Model 3 - 4). Rising income within counties reduces the level of crime, a finidng that has been corroborated in previous economic littature [**refer to papers**]. The results also find a non-significant relationship of the number of African Americans and Hispanics with crime. A 1% increase in the number of African Americans and Hispanics corelates with a 0.16% increase in reported crime. This relationship is unlikely to be causal, and more a figure of racial tensions in the United States. Finally, it estimates the elasticity of crime to population changes at 1. There is a 1:1 relationship between population and crime. Which is interesting.
+
+In contrast to the fixed effects approach, the model finds no significant impact of employment levels on crime. **Write a bit more about why this is important. Why it controls for possible auto correlation between errors in crime, i.e. crime is related to each other over time**
+
+This study is the first to empirically quantify the impact of increasing health coverage in reducing crime. The author finds the elasticity of crime towards changing health coverage to range between $[0, 0.35]$. The values have considerable deviations after controlling for social and economic factors. They also differ inter-temporally with the short term elasticity argueably closer to 0.35 caliberated by the first difference approach, whle the long-term elasticity closer to the values obtained by the fixed-effects approach, i.e. 0.24. 
+
+# Sensitivity Checks; What drives the results? {#robust}
+
+## Showdown; Is crime rational?
+
+In this section, the study empirically tests the economic and sociological approaches to crime. The economic rationale for crime is given by the trade-off between the risk and reward of undertaking a criminal action. **Becker's 19xx** does not explicitly model exogenous shocks to individuals that may prompt criminal action. Nonetheless, an exogenous shock, such as the onset of a sudden medical condition, would increase the expected reward for an uninsured individual. Thus within Becker's general framework of crime, an increase (decrease) of the number of uninsured individuals would increase (decrease) crimes with high expected reward, without impacting other sub-categories of crime. In contrast, with the sociological models of the General Strain Theory and Social Control, the presence of such exogenous shocks would have symmetric impact on all sub-catgeories of crime, irrespective of the expectation of a reward.
+
+To test the differences within the theories, sub-categories of crime are modelled following the approach layed out in equations 3-5 below. 
+
+\begin{equation}
+\ln total~crime_{i, t} = \beta_{t} \Delta \ln insurance_{i,t} + \sum \beta_{e} \Delta \ln E_{i,t} + \sum \beta_{d} \Delta \ln D_{i,t} + \mu_{i}  + \epsilon_{i,t} 
+\end{equation}
+
+\begin{equation}
+\ln violent~crime_{i, t} = \beta_{v} \Delta \ln insurance_{i,t} + \sum \beta_{e} \Delta \ln E_{i,t} + \sum \beta_{d} \Delta \ln D_{i,t} + \mu_{i} + \epsilon_{i,t} 
+\end{equation}
+
+\begin{equation}
+\ln property~crime_{i, t} = \beta_{p} \Delta \ln insurance_{i,t} + \sum \beta_{e} \Delta \ln E_{i,t} + \sum \beta_{d} \Delta \ln D_{i,t} + \mu_{i} + \epsilon_{i,t} 
+\end{equation}
+
+where the coefficients, $\{\beta_{t}, \beta_{v}, \beta_{p}\}$ refer to the individual elasticities of crime based on healthcare on total crimes, violent crimes and property crimes respectively. Violent crimes, which are highly personal in nature and with little financial reward, would not be impacted by changes in insurance rates within the Becker theory. Meanwhile, property crimes which are charcterised by higher financial gains, would show a positive and significant fall with rise in insurance rates. However, within the sociological theories, rise (decline) in insurance rates would not have a differentiated impact upon the different sub-categories. Thus, within Becker's economic framework, *a priori* it is assumed that $\beta_{t} \neq \beta_{v} \neq \beta_{p}$ such that $\beta_{v} \leq \beta_{t} \leq \beta_{p}$.
+
+It is important to note that the study continues to use the fixed effects approach over first difference design to understand the multiple years in an uniased manner. Research confirming the the *short-term* differences within crime is left to future research. Finally, the study also tests the model developed in equations 3-5 using data on the number of crimes related to drug sale and possesion. Healthcare and drugs have the closest connections. Individuals could be substituting medical drugs they can afford, with drugs and haluucenogens available easily, and cheaper than the medical ones. These results are interesting from a crimilogical point of view, but do not add to the tests of Becker and Social Control.
+
+```{r model_crime_rational, results = "hide"}
+
+source("Scripts/Regressions/crime-rational.R")
+```
+```{r model_crime_rational_table, results="hide"}
+
+stargazer(rc_models, header = F, 
+          title = "Rational Crime regressions", omit = "year", omit.stat = "all",
+          add.lines = list(c("N", rc_numbers$N),
+                           c("No of Panels", rc_numbers$panel)),
+          out = "Final Paper/tex_files/crime-rational.tex", out.header = F, align = T,
+          notes = "Table displays clusetered standard errors using White (1980)",
+          notes.append = T,
+          digits = 2, digits.extra = 0,
+          table.placement = "!b",
+          dep.var.caption = "", column.separate =  rep(1, 4),
+          column.labels = c("Violent Crimes", "Property Cimes", 
+                            "Drug Crimes", "Total Crime"),
+          covariate.labels = c("Uninsured", "Population", "Blacks and Hispanics",
+                               "Median Income", "Unemployed"))
+```
+
+\input{"tex_files/crime-rational.tex"}
+
+The results of the different regressions are displayed in Table 3. The number of uninsured is also seen to have a positive, and significant, impact on crime levels. The elasticity ranges from 0.09 for property crimes, to 0.19 for violent crimes. These values are interesting, and suggest that the theory laid out in for the impact of becker may not exist.
+
+A welch-test to test the differences between all three specifications is cnonducted. Welch a better model. 
+
+## Crime and Cities; Where did crime fall?
+
+## What happens in Texas?
+
+# Conclusion {#conclude}
+
+## Limitations
 
 \pagebreak
 
