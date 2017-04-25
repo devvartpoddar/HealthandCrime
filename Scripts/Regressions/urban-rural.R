@@ -8,9 +8,6 @@ final.data <- import('Data/merged-data.json')  %>%
             funs(log))  %>%
   mutate(urban = factor(urban, levels = 1:6))
 
-# Cleaning up infinity values
-is.na(final.data) <- do.call(cbind,lapply(final.data, is.infinite))
-
 # Custom Functions
 give.number <- function(list.reg) {
   # Number of regressions
@@ -40,24 +37,27 @@ se.correct <- function(x) {
 
 # Running the different models
 # Regressions
-fe_violent <- plm(P1VLNT ~ NUI + NUI*urban + CPOPARST + blacks_and_hispanics + 
-                    MedianIncome + unemployed + year,
+
+fe_base <- plm(GRNDTOT ~ NUI + NUI*urban + CPOPARST,
+               data = final.data)
+
+fe_social <- plm(GRNDTOT ~ NUI + NUI*urban + CPOPARST + blacks_and_hispanics,
+                 data = final.data)
+
+fe_econ <- plm(GRNDTOT ~ NUI + NUI*urban + CPOPARST + MedianIncome +
+                 unemployed,
+               data = final.data)
+
+fe_control <- plm(GRNDTOT ~ NUI + NUI*urban + CPOPARST + blacks_and_hispanics + 
+                    MedianIncome + unemployed,
                   data = final.data)
 
-fe_property <- plm(P1PRPTY ~ NUI + NUI:urban + CPOPARST + blacks_and_hispanics + 
-                     MedianIncome + unemployed + year,
-                   data = final.data)
+fe_year <- plm(GRNDTOT ~ NUI + NUI*urban + CPOPARST + blacks_and_hispanics +
+                 MedianIncome + unemployed + year,
+               data = final.data)
 
-fe_drugposs <- plm(DRUGTOT ~ NUI + NUI:urban + CPOPARST + blacks_and_hispanics + 
-                     MedianIncome + unemployed + year,
-                   data = final.data)
-
-fe_total <- plm(GRNDTOT ~ NUI + NUI:urban + CPOPARST + blacks_and_hispanics + 
-                  MedianIncome + unemployed + year,
-                data = final.data)
-
-rc_models <- list(fe_violent, fe_property, fe_drugposs, fe_total)
-rc_numbers <- give.number(rc_models)
-rc_models <- lapply(rc_models, se.correct)
+ub_models <- list(fe_base, fe_social, fe_econ, fe_control, fe_year)
+ub_numbers <- give.number(ub_models)
+ub_models <- lapply(ub_models, se.correct)
 
 rm(fe_violent, fe_property, fe_drugposs, fe_total, final.data)

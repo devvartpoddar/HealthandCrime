@@ -54,7 +54,7 @@ se.correct <- function(x) {
 fd_base <- plm(GRNDTOT ~ -1 + NUI + CPOPARST,
                data = fd.data, model = "fd")
 
-fd_social <- plm(GRNDTOT ~ -1 +  NUI + CPOPARST + blacks_and_hispanics,
+fd_social <- plm(GRNDTOT ~ -1 + NUI + CPOPARST + blacks_and_hispanics,
                  data = fd.data, model = "fd")
 
 fd_econ <- plm(GRNDTOT ~ -1 + NUI + CPOPARST + MedianIncome +
@@ -70,7 +70,3 @@ fd_numbers <- give.number(fd_models)
 # fd_models <- lapply(fd_models, se.correct)
 
 rm(fd_base, fd_control, fd_year, fd.data)
-
-fd_control <- plm(P1PRPTY ~ -1 + NUI + CPOPARST + blacks_and_hispanics + 
-                    MedianIncome + unemployed,
-                  data = fd.data, model = "fd")

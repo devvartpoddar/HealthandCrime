@@ -4,7 +4,7 @@
 final.data <- import('Data/merged-data.json')  %>%
   arrange(UID, year) %>%
   select(-iprcat) %>%
-  mutate_at(vars(matches("GRNDTOT|NUI|CPOPARST|Median|black|unemployed|P1")),
+  mutate_at(vars(matches("TOT|NUI|CPOPARST|Median|black|unemployed|P1")),
             funs(log))
 
 # Cleaning up infinity values
@@ -52,7 +52,7 @@ fe_control <- plm(GRNDTOT ~ NUI + CPOPARST + blacks_and_hispanics +
                     MedianIncome + unemployed,
                  data = final.data)
 
-fe_year <- plm(GRNDTOT ~ NUI + CPOPARST + blacks_and_hispanics + 
+fe_year <- plm(GRNDTOT ~ NUI + CPOPARST + blacks_and_hispanics +
                     MedianIncome + unemployed + year,
                   data = final.data)
 
