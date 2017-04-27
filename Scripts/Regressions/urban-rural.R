@@ -8,6 +8,9 @@ final.data <- import('Data/merged-data.json')  %>%
             funs(log))  %>%
   mutate(urban = factor(urban, levels = 1:6))
 
+# Cleaning up infinity values
+is.na(final.data) <- do.call(cbind,lapply(final.data, is.infinite))
+
 # Custom Functions
 give.number <- function(list.reg) {
   # Number of regressions
@@ -32,7 +35,7 @@ give.number <- function(list.reg) {
 }
 
 se.correct <- function(x) {
-  coeftest(x, vcovHC)
+  coeftest(x, vcov.= function(x) vcovHC(x))
 }
 
 # Running the different models

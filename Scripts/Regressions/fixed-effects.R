@@ -34,7 +34,7 @@ give.number <- function(list.reg) {
 }
 
 se.correct <- function(x) {
-  coeftest(x, vcovHC)
+  coeftest(x, vcov.= function(x) vcovHC(x))
 }
 
 # Regressions
