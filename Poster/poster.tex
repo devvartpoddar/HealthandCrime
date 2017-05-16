@@ -1,0 +1,281 @@
+\documentclass[portrait,a1,final]{a0poster}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+% For documentation, see
+% ftp://ftp.funet.fi/pub/TeX/CTAN/macros/latex/contrib/a0poster/a0_eng.pdf
+
+\usepackage{epsf,pstricks}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+%\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1.0cm,bmargin=1.5cm,lmargin=1.5cm,rmargin=1.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=ning,pdfborder={0 0 1},backref=ning,colorlinks=ning]
+ {hyperref}
+\hypersetup{pdfstartview={XYZ null null 1}}
+\usepackage{authblk}
+\usepackage{nopageno}
+
+% Colour
+\usepackage{xcolor}
+
+% Fonts
+%\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
+%\usepackage{times}
+
+% For tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,snakes}
+\usepackage{amsmath,amssymb}
+\usetikzlibrary{positioning}
+
+\title{\Huge Finding a Cure for Crime}
+\date{}
+\author{{\Large Exploring the impact of Healthcare Reforms on Crime in the United States}\\ \small { Devvart Poddar}\\ {Supervisor: \textcolor{magenta}{Prof. Dr. Christian Traxler}}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+\maketitle
+\pagestyle{empty}
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{mybox} = [draw=blue, fill=green!20, very thick, rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{myboxwhite} = [rectangle, rounded corners, inner sep=10pt, inner ysep=0pt]
+\tikzstyle{myboxblue} = [rectangle, fill=gray!40, rounded corners, inner sep=10pt, inner ysep=20pt]
+
+\vspace{0cm}
+
+% \resizebox{\textwidth}{0.8\textheight}{
+\begin{tikzpicture}[remember picture]
+
+\node [myboxwhite, yshift=-10cm] (intro){%
+    \begin{minipage}{0.45\textwidth}
+
+     \small Economic theory models crime as an equilibrium of demand and supply of crime, an equilibrium which may be shifted through exogenous tools such as mandatory minimum laws in the US. However these theories contrast with emperical results that find no positive impact of increasing law and order on crime rates.  In contrast, sociological theories of crime focus on explaining crime through \textit{relationships in which others prevent the individual from achieving positively valued goals}. \\ \\ Neither economic or sociological theories looked towards health and access to healthcare as a policy tool towards reducing crime. Within economic models of crime, improvements in healthcare coverage would reduce the expected rewards from crime, while following the sociological models, improvements in health would reduce exogenous stimuli faced by individuals reducing their propensity of individuals to engage in criminal activity. The task of this study is to inform policy makers and students of human behaviour on the interactions between healthcare and crime.
+        
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=intro, node distance=12cm, yshift=0cm, xshift=3cm] (insurancea){%
+    \begin{minipage}{0.45\textwidth}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/insurancea-1} 
+
+\end{knitrout}
+    
+    \end{minipage}
+
+};
+
+\node [myboxwhite, right of=insurancea, node distance=25cm, yshift=0cm, xshift=0cm] (insuranceb){%
+    \begin{minipage}{0.45\textwidth}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/insuranceb-1} 
+
+\end{knitrout}
+       
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=insuranceb, node distance=7cm, yshift=0cm, xshift=-5cm] (caption){%
+    \begin{minipage}{0.60\textwidth}
+
+    \small \textbf{Note}: The figure displays rates of insured individuals for different time spans. Darer shades imply greater coverage. \\ \textbf{Source:} SAHIE, US Census Bureau
+    
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=intro, node distance=35cm, yshift=0cm, xshift=0cm] (models){%
+    \begin{minipage}{0.45\textwidth}
+
+        \textbf{\quad\small Modelling Crime:} \small Crime is modeled using a fixed effects regression with logged linear variables, allowing the model to estimate the elasticity of crime to changes in healthcare coverage. Formally, the model is defined as;
+        \begin{equation}
+        \ln crime_{i, t} = \beta_{fe} \ln insurance_{i,t} + \sum \beta_{e} \ln E_{i,t} + \sum \beta_{d} \ln D_{i,t} + \mu_{i} + \epsilon_{it}
+        \end{equation}
+        
+        \small Since the study measures insurance rates using the number of uninsured Americans, \textit{a priori}, the coefficient of interest is assumed to be strictly greater than zero; $\beta_{fe} \gg 0$. The study also refines the impact of the implementation of the Affordable care Act (ACA) usng a first difference approach. This leads to equation (2);
+        \begin{equation}
+        \Delta \ln crime_{i} = \beta_{fd} \Delta \ln insurance_{i} + \sum \beta_{e} \Delta \ln E_{i} + \sum \beta_{d} \Delta \ln D_{i} + \epsilon
+        \end{equation}
+
+such that the difference is taken for the years 2011-12 and 2013-14. Finally, the economic and sociological models are tested. Economic theory of crime would posit that exogenous changes in insurance rates would drive individuals towards (away from) crime with greater financial reward. Thus; $$H_{econ}: \beta_{v} \leq \beta_{t} \leq \beta_{p}$$
+where; ${v, t, p}$ refer to violent crime, total crime and property crimes respectively.  However, within the sociological theories, rise (decline) in insurance rates would have a symmetric impact on all categories of crime, without differentiation. This leads to the alternate hypothesis of;
+$$H_{socio}: \beta_{} = \beta_{t} = \beta_{p}$$
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=models, node distance=19cm, yshift=0cm, xshift=0cm] (plota){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \textbf{\quad\small Results: Does Healthcare impact Crime?} \\
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/plota-1} 
+
+\end{knitrout}
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, right of=intro, node distance=28cm, yshift=1.2cm, xshift=-1cm] (plotb){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Results: Did ACA help reduce crime?} \\
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/plotb-1} 
+
+\end{knitrout}
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, right of=models, node distance=28cm, yshift=6.3cm, xshift=-1cm] (plotc){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Results: Economics vs Sociology?} \\
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/plotc-1} 
+
+\end{knitrout}
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=plotc, node distance=13cm, yshift=0cm, xshift=0cm] (concl){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Fire and Smoke:} \small There is a lot of smoke, and some fire, that was created en-route towards achieving such a goal. The study found the elasticity of crime due to healthcare coverage to be bound between $[0, 0.23]$. However enroute to Ithaca, like Ulysses, we are left in the dark regarding the mechanisms of these changes. The study rejects the economic theory of rational crime in explaining these divergences, as well as the sociological theories of crime. \\ \\ Nonetheless, there is a lot to be achieved with the information we have at hand. The results of the study show the existence of positive spillovers of increased healthcare coverage and, to a limited extent, the ACA Act on reducing crime. This naturally leads to the question of how to best utilise the existing healthcare systems to amplify such externalities, and to reform healthcare systems where needed.
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=concl, node distance=10cm, yshift=0cm, xshift=0cm] (refer){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \small{
+        \textbf{\quad References} 
+            \begin{enumerate}
+      \item Agnew, R. (1992). Foundation for a General Strain Theory of Crime and Delinquency. \textit{Criminology, 30} (1), 47–87.
+      \item Becker, G. S. (1968). \textit{Crime and Punishment: An Economic Approach} (Vol. 76, p. 169).
+      \item Eckenrode, J. et. al. (2000). Preventing child abuse and neglect with a program of nurse home visitation. The limiting effects of domestic violence. \textit{Journal of the American Medical Association, 284} (11), 1385–1391.
+    \end{enumerate}
+    }
+
+    \end{minipage}
+};
+
+\node [myboxblue, below of=refer, node distance=7cm, yshift=0cm, xshift=0cm] (github){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \scriptsize{
+        \textbf{\quad Note:} The codes for replication are available online at \textcolor{blue}{https://github.com/devvartpoddar/HealthandCrime}. Email at \textcolor{blue}{d.poddar@mpp.hertie-school.org} for the data. 
+}
+
+    \end{minipage}
+};
+
+
+% \node [myboxwhite, anchor = south] (final) at ([yshift=4cm]current page.south) {%
+% 
+% <<final, echo=FALSE, cache=TRUE, dev='pdf', fig.height=2, fig.width=15, message=FALSE>>=
+% setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+% 
+% import('Data/merged-data.json')  %>%
+%   arrange(UID, year) %>%
+%   select(GRNDTOT, NUI) %>%
+%   filter(GRNDTOT > 1, NUI > 1) %>%
+%   mutate_each(funs(log)) %>%
+%   ggplot() +
+%   geom_point(aes(x = GRNDTOT, y = NUI, colour = NUI), alpha = 0.2) +
+%   scale_fill_viridis() +
+%   theme_minimal() +
+%   theme(
+%     axis.title = element_blank(),
+%     axis.text = element_blank(),
+%     panel.grid = element_blank(),
+%     legend.position = "none"
+%   )
+% 
+% @
+% 
+% };
+
+\end{tikzpicture}
+
+\end{document}

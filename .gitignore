@@ -26,7 +26,10 @@ vignettes/*.pdf
 
 # knitr and R markdown default cache directories
 /Final Paper/*_cache/
-/cache/
+cache/
+figure/
+*.log
+*.out
 /Final Paper/*_files/
 
 # Temporary files created by R markdown

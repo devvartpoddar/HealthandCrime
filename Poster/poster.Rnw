@@ -1,0 +1,393 @@
+\documentclass[portrait,a1,final]{a0poster}
+% For documentation, see
+% ftp://ftp.funet.fi/pub/TeX/CTAN/macros/latex/contrib/a0poster/a0_eng.pdf
+
+\usepackage{epsf,pstricks}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+%\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1.0cm,bmargin=1.5cm,lmargin=1.5cm,rmargin=1.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=ning,pdfborder={0 0 1},backref=ning,colorlinks=ning]
+ {hyperref}
+\hypersetup{pdfstartview={XYZ null null 1}}
+\usepackage{authblk}
+\usepackage{nopageno}
+
+% Colour
+\usepackage{xcolor}
+
+% Fonts
+%\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
+%\usepackage{times}
+
+% For tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,snakes}
+\usepackage{amsmath,amssymb}
+\usetikzlibrary{positioning}
+
+\title{\Huge Finding a Cure for Crime}
+\date{}
+\author{{\Large Exploring the impact of Healthcare Reforms on Crime in the United States}\\ \small { Devvart Poddar}\\ {Supervisor: \textcolor{magenta}{Prof. Dr. Christian Traxler}}}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE,
+message = FALSE,
+echo = FALSE,
+warning = FALSE,
+error = FALSE
+)
+@
+
+\maketitle
+\pagestyle{empty}
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{mybox} = [draw=blue, fill=green!20, very thick, rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{myboxwhite} = [rectangle, rounded corners, inner sep=10pt, inner ysep=0pt]
+\tikzstyle{myboxblue} = [rectangle, fill=gray!40, rounded corners, inner sep=10pt, inner ysep=20pt]
+
+\vspace{0cm}
+
+% \resizebox{\textwidth}{0.8\textheight}{
+\begin{tikzpicture}[remember picture]
+
+\node [myboxwhite, yshift=-10cm] (intro){%
+    \begin{minipage}{0.45\textwidth}
+
+     \small Economic theory models crime as an equilibrium of demand and supply of crime, an equilibrium which may be shifted through exogenous tools such as mandatory minimum laws in the US. However these theories contrast with emperical results that find no positive impact of increasing law and order on crime rates.  In contrast, sociological theories of crime focus on explaining crime through \textit{relationships in which others prevent the individual from achieving positively valued goals}. \\ \\ Neither economic or sociological theories looked towards health and access to healthcare as a policy tool towards reducing crime. Within economic models of crime, improvements in healthcare coverage would reduce the expected rewards from crime, while following the sociological models, improvements in health would reduce exogenous stimuli faced by individuals reducing their propensity of individuals to engage in criminal activity. The task of this study is to inform policy makers and students of human behaviour on the interactions between healthcare and crime.
+        
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=intro, node distance=12cm, yshift=0cm, xshift=3cm] (insurancea){%
+    \begin{minipage}{0.45\textwidth}
+
+<<insurancea, echo=FALSE, cache=TRUE, dev='pdf', fig.height=15, fig.width=15, message=FALSE>>=
+setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+source("packages.R")
+
+output <- capture.output({
+  us.shp <- readOGR('Raw Data/Shape Files', 'UScounties') %>%
+  fortify(region = "FIPS") %>%
+  mutate(UID = as.numeric(id))
+})
+
+import("Data/merged-data.json") %>%
+  select(year, UID, PCTUI, FIPS_ST) %>%
+  filter(FIPS_ST != 2, FIPS_ST != 15,
+         year >= 2011 & year <= 2012) %>% # Removing Alaska and Hawaii
+  left_join(us.shp) %>%
+  ggplot() +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = PCTUI)) +
+  facet_wrap(~year) +
+  coord_map() +
+  scale_fill_viridis() +
+  theme_minimal() +
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "none",
+    strip.text = element_text(size = 26)
+  )
+@
+    
+    \end{minipage}
+
+};
+
+\node [myboxwhite, right of=insurancea, node distance=25cm, yshift=0cm, xshift=0cm] (insuranceb){%
+    \begin{minipage}{0.45\textwidth}
+
+<<insuranceb, echo=FALSE, cache=TRUE, dev='pdf', fig.height=15, fig.width=15, message=FALSE>>=
+setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+
+import("Data/merged-data.json") %>%
+  select(year, UID, PCTUI, FIPS_ST) %>%
+  filter(FIPS_ST != 2, FIPS_ST != 15,
+         year >= 2013 & year <= 2014) %>% # Removing Alaska and Hawaii
+  left_join(us.shp) %>%
+  ggplot() +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = PCTUI)) +
+  facet_wrap(~year) +
+  coord_map() +
+  scale_fill_viridis() +
+  theme_minimal() +
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "none",
+    strip.text = element_text(size = 26)
+  )
+@
+       
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=insuranceb, node distance=7cm, yshift=0cm, xshift=-5cm] (caption){%
+    \begin{minipage}{0.60\textwidth}
+
+    \small \textbf{Note}: The figure displays rates of insured individuals for different time spans. Darer shades imply greater coverage. \\ \textbf{Source:} SAHIE, US Census Bureau
+    
+    \end{minipage}
+
+};
+
+\node [myboxwhite, below of=intro, node distance=35cm, yshift=0cm, xshift=0cm] (models){%
+    \begin{minipage}{0.45\textwidth}
+
+        \textbf{\quad\small Modelling Crime:} \small Crime is modeled using a fixed effects regression with logged linear variables, allowing the model to estimate the elasticity of crime to changes in healthcare coverage. Formally, the model is defined as;
+        \begin{equation}
+        \ln crime_{i, t} = \beta_{fe} \ln insurance_{i,t} + \sum \beta_{e} \ln E_{i,t} + \sum \beta_{d} \ln D_{i,t} + \mu_{i} + \epsilon_{it}
+        \end{equation}
+        
+        \small Since the study measures insurance rates using the number of uninsured Americans, \textit{a priori}, the coefficient of interest is assumed to be strictly greater than zero; $\beta_{fe} \gg 0$. The study also refines the impact of the implementation of the Affordable care Act (ACA) usng a first difference approach. This leads to equation (2);
+        \begin{equation}
+        \Delta \ln crime_{i} = \beta_{fd} \Delta \ln insurance_{i} + \sum \beta_{e} \Delta \ln E_{i} + \sum \beta_{d} \Delta \ln D_{i} + \epsilon
+        \end{equation}
+
+such that the difference is taken for the years 2011-12 and 2013-14. Finally, the economic and sociological models are tested. Economic theory of crime would posit that exogenous changes in insurance rates would drive individuals towards (away from) crime with greater financial reward. Thus; $$H_{econ}: \beta_{v} \leq \beta_{t} \leq \beta_{p}$$
+where; ${v, t, p}$ refer to violent crime, total crime and property crimes respectively.  However, within the sociological theories, rise (decline) in insurance rates would have a symmetric impact on all categories of crime, without differentiation. This leads to the alternate hypothesis of;
+$$H_{socio}: \beta_{} = \beta_{t} = \beta_{p}$$
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=models, node distance=19cm, yshift=0cm, xshift=0cm] (plota){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \textbf{\quad\small Results: Does Healthcare impact Crime?} \\
+
+<<source, echo=FALSE, cache=TRUE, message=FALSE, warning=FALSE, error=FALSE>>=
+setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+
+
+source("Scripts/Regressions/fixed-effects.R")
+source("Scripts/Regressions/first-difference.R")
+source("Scripts/Regressions/crime-rational.R")
+@
+
+<<plota, echo=FALSE, cache=TRUE, dev='pdf', fig.height=5, fig.width=15, message=FALSE, warning=FALSE>>=
+setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+
+import('Data/merged-data.json')  %>%
+  arrange(UID, year) %>%
+  select(year, GRNDTOT, NUI, FIPS_ST) %>%
+  filter(year == 2006 | year == 2014) %>%
+  group_by(FIPS_ST, year) %>%
+  summarise_all(funs(mean(., na.rm = T))) %>%
+  group_by(FIPS_ST) %>%
+  mutate(t = lag(NUI),
+         NUI_pct = (NUI - t) / t,
+         NUI_pct = ifelse(is.finite(NUI_pct), NUI_pct, NA),
+         t = lag(GRNDTOT),
+         GRNDTOT_pct = (GRNDTOT - t) / t,
+         GRNDTOT_pct = ifelse(is.finite(GRNDTOT_pct), GRNDTOT_pct, NA)) %>%
+  filter(FIPS_ST != 12 , FIPS_ST != 17) %>%
+  ggplot(aes(x = NUI_pct, y = GRNDTOT_pct)) +
+  geom_point(aes(colour = NUI_pct), size = 4) +
+  scale_colour_viridis() +
+  geom_hline(yintercept = 0, linetype = 2, colour = "red") +
+  geom_vline(xintercept = 0, linetype = 2, colour = "red") +
+  labs(x = "\n % change in Uninsured Individuals",
+       y = "% change in Total Crime \n") +
+  theme_minimal() +
+   theme(
+     axis.title = element_text(size = 26),
+     axis.text = element_text(size = 20),
+     panel.grid = element_blank(),
+     legend.position = "none"
+   )
+
+
+@
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, right of=intro, node distance=28cm, yshift=1.2cm, xshift=-1cm] (plotb){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Results: Did ACA help reduce crime?} \\
+
+<<plotb, echo=FALSE, cache=TRUE, dev='pdf', fig.height=6, fig.width=15, message=FALSE, warning=FALSE>>=
+x1 <- fd_models[[1]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Base")
+
+x2 <- fd_models[[2]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Social Controls")
+
+x3 <- fd_models[[3]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Economic Controls")
+
+x4 <- fd_models[[4]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Full Controls")  %>%
+  rbind(x1, x2, x3) %>%
+  mutate(model = factor(model, levels = c("Base",
+                                          "Social Controls",
+                                          "Economic Controls",
+                                          "Full Controls")),
+         upr = estimate + 2*std.error,
+         lwr = estimate - 2*std.error)
+
+ggplot(x4) +
+  # geom_col(aes(x = model, y = estimate, fill = model)) +
+  geom_hline(yintercept = 0, linetype = 3, color = "red") +
+  geom_segment(aes(x = model, xend = model, y = upr, yend = lwr),
+               linetype = 2, alpha = 0.7) +
+  geom_point(aes(x = model, y = estimate, colour = model), size = 5) +
+  # scale_fill_viridis(discrete = T) +
+  scale_colour_viridis(discrete = T) +
+  scale_y_continuous(position = "right") +
+  theme_minimal() +
+  # theme_classic() +
+  coord_flip() +
+  theme(
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    axis.text = element_text(size = 26),
+    title = element_text(size = 30),
+    legend.position = "none"
+  )
+
+@
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, right of=models, node distance=28cm, yshift=6.3cm, xshift=-1cm] (plotc){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Results: Economics vs Sociology?} \\
+
+<<plotc, echo=FALSE, cache=TRUE, dev='pdf', fig.height=6, fig.width=15, message=FALSE, warning=FALSE>>=
+x1 <- rc_models[[1]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Violent Crimes")
+
+x2 <- rc_models[[2]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Property Crimes")
+
+x3 <- rc_models[[3]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Drug Crimes")
+
+x4 <- fd_models[[4]] %>% tidy() %>%
+  filter(term == "NUI") %>%
+  mutate(model = "Total Crime")  %>%
+  rbind(x1, x2, x3) %>%
+  mutate(model = factor(model, levels = c("Violent Crimes",
+                                          "Total Crime",
+                                          "Property Crimes",
+                                          "Drug Crimes")),
+         upr = estimate + 2*std.error,
+         lwr = estimate - 2*std.error)
+
+ggplot(x4) +
+  geom_col(aes(x = model, y = estimate, fill = model)) +
+  geom_text(aes(x = model, y = 0.005, label = model), 
+            colour = "white", size = 10, hjust = "left") +
+  scale_fill_viridis(discrete = T) +
+  theme_minimal() +
+  coord_flip() +
+  theme(
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    axis.text = element_text(size = 26),
+    title = element_text(size = 30),
+    legend.position = "none",
+    axis.text.y = element_blank()
+  )
+
+@
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=plotc, node distance=13cm, yshift=0cm, xshift=0cm] (concl){%
+    \begin{minipage}{0.45\textwidth}
+    
+        \textbf{\quad\small Fire and Smoke:} \small There is a lot of smoke, and some fire, that was created en-route towards achieving such a goal. The study found the elasticity of crime due to healthcare coverage to be bound between $[0, 0.23]$. However enroute to Ithaca, like Ulysses, we are left in the dark regarding the mechanisms of these changes. The study rejects the economic theory of rational crime in explaining these divergences, as well as the sociological theories of crime. \\ \\ Nonetheless, there is a lot to be achieved with the information we have at hand. The results of the study show the existence of positive spillovers of increased healthcare coverage and, to a limited extent, the ACA Act on reducing crime. This naturally leads to the question of how to best utilise the existing healthcare systems to amplify such externalities, and to reform healthcare systems where needed.
+
+
+    \end{minipage}
+};
+
+\node [myboxwhite, below of=concl, node distance=10cm, yshift=0cm, xshift=0cm] (refer){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \small{
+        \textbf{\quad References} 
+            \begin{enumerate}
+      \item Agnew, R. (1992). Foundation for a General Strain Theory of Crime and Delinquency. \textit{Criminology, 30} (1), 47–87.
+      \item Becker, G. S. (1968). \textit{Crime and Punishment: An Economic Approach} (Vol. 76, p. 169).
+      \item Eckenrode, J. et. al. (2000). Preventing child abuse and neglect with a program of nurse home visitation. The limiting effects of domestic violence. \textit{Journal of the American Medical Association, 284} (11), 1385–1391.
+    \end{enumerate}
+    }
+
+    \end{minipage}
+};
+
+\node [myboxblue, below of=refer, node distance=7cm, yshift=0cm, xshift=0cm] (github){%
+    \begin{minipage}{0.45\textwidth}
+    
+    \scriptsize{
+        \textbf{\quad Note:} The codes for replication are available online at \textcolor{blue}{https://github.com/devvartpoddar/HealthandCrime}. Email at \textcolor{blue}{d.poddar@mpp.hertie-school.org} for the data. 
+}
+
+    \end{minipage}
+};
+
+
+% \node [myboxwhite, anchor = south] (final) at ([yshift=4cm]current page.south) {%
+% 
+% <<final, echo=FALSE, cache=TRUE, dev='pdf', fig.height=2, fig.width=15, message=FALSE>>=
+% setwd("/home/devvart/Dropbox/Hertie/HealthandCrime")
+% 
+% import('Data/merged-data.json')  %>%
+%   arrange(UID, year) %>%
+%   select(GRNDTOT, NUI) %>%
+%   filter(GRNDTOT > 1, NUI > 1) %>%
+%   mutate_each(funs(log)) %>%
+%   ggplot() +
+%   geom_point(aes(x = GRNDTOT, y = NUI, colour = NUI), alpha = 0.2) +
+%   scale_fill_viridis() +
+%   theme_minimal() +
+%   theme(
+%     axis.title = element_blank(),
+%     axis.text = element_blank(),
+%     panel.grid = element_blank(),
+%     legend.position = "none"
+%   )
+% 
+% @
+% 
+% };
+
+\end{tikzpicture}
+
+\end{document}

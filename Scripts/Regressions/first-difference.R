@@ -8,7 +8,7 @@ sum.data <- data.frame(
 
 fd.data <- import('Data/merged-data.json')  %>%
   arrange(UID, year) %>%
-  select(-iprcat) %>%
+  select(-iprcat, -county_name) %>%
   filter(year >= 2011, year < 2015) %>%
   merge(sum.data, all = T) %>%
   group_by(UID, fd) %>%

@@ -3,7 +3,7 @@
 # Load data
 final.data <- import('Data/merged-data.json')  %>%
   arrange(UID, year) %>%
-  select(-iprcat) %>%
+  select(-iprcat, -county_name) %>%
   mutate_at(vars(matches("TOT|NUI|CPOPARST|Median|black|unemployed|P1")),
             funs(log))  %>%
   mutate(urban = factor(urban, levels = 1:6))
